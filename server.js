@@ -8,7 +8,7 @@ const logger = require('morgan')
 
 const PORT = process.env.PORT || 3001;
 
-const uri = process.env.MONGODB_URI || config.dbUri;
+const uri = process.env.MONGODB_URI || config.mLab;
 
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
@@ -44,9 +44,9 @@ app.use('/api', apiRoutes);
 // Add routes, both API and view
 require('./server/routes/my-api')(app);
 
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 
 // Start the API server
