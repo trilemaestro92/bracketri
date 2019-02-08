@@ -1,0 +1,5 @@
+{
+  "dbUri": "mongodb://localhost/react_bracketri",
+  "mLab": "mongodb://trilemaestro:200169924tn@ds013956.mlab.com:13956/heroku_r0m54ptv",
+  "jwtSecret": "a secret phrase!!"
+}
