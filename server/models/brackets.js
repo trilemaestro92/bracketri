@@ -295,6 +295,94 @@ const BracketSchema = new Schema({
                         trim: true
                     }
                 }
+            },
+            row5: {
+                a: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                },
+                b: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                }
+            },
+            row6: {
+                a: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                },
+                b: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                }
+            },
+            row7: {
+                a: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                },
+                b: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                }
+            },
+            row8: {
+                a: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                },
+                b: {
+                    name: {
+                        type: String,
+                        trim: true
+                    },
+                    seed: {
+                        type: Number,
+                        trim: true
+                    }
+                }
             }
         },
         col3: {

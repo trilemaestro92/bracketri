@@ -228,6 +228,46 @@ class DashboardPage extends React.Component {
           name: '',
           seed: 0
         }
+      },
+      row5: {
+        a: {
+          name: '',
+          seed: 0
+        },
+        b: {
+          name: '',
+          seed: 0
+        }
+      },
+      row6: {
+        a: {
+          name: '',
+          seed: 0
+        },
+        b: {
+          name: '',
+          seed: 0
+        }
+      },
+      row7: {
+        a: {
+          name: '',
+          seed: 3
+        },
+        b: {
+          name: '',
+          seed: 0
+        }
+      },
+      row8: {
+        a: {
+          name: '',
+          seed: 0
+        },
+        b: {
+          name: '',
+          seed: 0
+        }
       }
     },
     thirdColumn: {
@@ -329,7 +369,7 @@ class DashboardPage extends React.Component {
   handleChangeMatchup = (e, { value, rownum, letter, size, options }) => {
     const { secondColumn, thirdColumn, fourthColumn, fifthColumn } = this.state
     // console.log(rownum, letter, value, size, options )
-    let seedOption 
+    let seedOption
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
         seedOption = options[i].seed
@@ -363,7 +403,7 @@ class DashboardPage extends React.Component {
   handleChangeMatchupRound2 = (e, { value, rownum, letter, size, options }) => {
     // console.log(rownum, letter, value, size, options)
     const { secondColumn, thirdColumn, fourthColumn, fifthColumn } = this.state
-    let seedOption 
+    let seedOption
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
         seedOption = options[i].seed
@@ -392,7 +432,7 @@ class DashboardPage extends React.Component {
   handleChangeMatchupRound3 = (e, { value, rownum, letter, size, options }) => {
     // console.log(rownum, letter, value, size, options)
     const { secondColumn, thirdColumn, fourthColumn, fifthColumn } = this.state
-    let seedOption 
+    let seedOption
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
         seedOption = options[i].seed
@@ -413,7 +453,7 @@ class DashboardPage extends React.Component {
   handleChangeMatchupRound4 = (e, { value, rownum, letter, size, options }) => {
     // console.log(rownum, letter, value, size, options)
     const { secondColumn, thirdColumn, fourthColumn, fifthColumn } = this.state
-    let seedOption 
+    let seedOption
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
         seedOption = options[i].seed
@@ -545,7 +585,7 @@ class DashboardPage extends React.Component {
           data: this.state.fifthColumn
         }
       ).catch(function (e) { console.log(e) })
-    } 
+    }
     this.componentDidMount()
     window.location.href = '/dashboard'
   }
@@ -566,7 +606,7 @@ class DashboardPage extends React.Component {
           data: this.state.fifthColumn
         }
       ).catch(function (e) { console.log(e) })
-    } 
+    }
     this.componentDidMount()
     window.location.href = '/dashboard'
   }
@@ -635,7 +675,7 @@ class DashboardPage extends React.Component {
           }
         }
         // console.log(this.state.secondColumn)
-        console.log(this.state.secondColumn)
+        console.log(this.state.thirdColumn)
       })
 
   }
