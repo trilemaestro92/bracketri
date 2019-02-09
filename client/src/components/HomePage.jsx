@@ -1,26 +1,34 @@
-import React from 'react';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
-import Auth from '../utils/Auth';
+import React, { Component } from 'react';
+import { Button, Container, Divider } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
+import '../App.css'
 
-class HomePage extends React.Component {
-
-  componentDidMount() {
-    // update authenticated state on logout
-    this.props.toggleAuthenticateStatus()
-  }
-
-  render() {
-    return (
-      <Card className="container">
-        <CardTitle title="React Application" subtitle="This is the home page." />
-          {Auth.isUserAuthenticated() ? (
-            <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
-          ) : (
-            <CardText style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</CardText>
-          )}
-      </Card>
-    )
-  }
+class HomePage extends Component {
+    componentDidMount() {
+        // update authenticated state on logout
+        this.props.toggleAuthenticateStatus()
+    }
+    render() {
+        return (
+            <div className='outer-container'>
+                <div className='content-container'>
+                    <div style={{ marginTop: '100px' }}>
+                        <Container textAlign='center'>
+                            <b style={{ fontSize: '30px', marginTop: '50px' }}>Create, Control, and Analyze your Tournaments</b>
+                            <Divider />
+                        </Container>
+                        <Container textAlign='center'>
+                                <Button size='huge' color='teal' animated='vertical' onClick={this.props.handleClickSample} >
+                                    <Button.Content visible>Generate a Sample Bracket</Button.Content>
+                                    <Button.Content hidden>Using Bracketri</Button.Content>
+                                </Button>
+                        </Container>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 };
 
-export default HomePage;
+
+export default HomePage

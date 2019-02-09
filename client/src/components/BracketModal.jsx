@@ -1,9 +1,9 @@
 import React from 'react';
-import { Modal, Checkbox, Menu, Select, Dropdown, Form, Segment, Header, Button, Icon, Container } from 'semantic-ui-react';
+import { Modal, Menu, Dropdown, Segment, Header, Button, Icon, Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../App.css'
 import { options, options2, options3 } from './Options'
-import { size2 } from './RoundMatchup'
+
 
 const RoundHead = (props) => (
     <div style={{ fontWeight: 'bold', textTransform: 'capitalize', display: 'grid', justifyContent: 'left', }} >
@@ -67,26 +67,13 @@ const BraketModal = ({
     onSubmitChangeRound2,
     onSubmitChangeRound3,
     onSubmitChangeRound4,
-    openModal,
-    handleNameChange,
-    handleSizeChange,
-    handleTeamChange,
     handleChangeMatchup,
     handleChangeMatchupRound2,
     handleChangeMatchupRound3,
     handleChangeMatchupRound4,
     handleDeleteBracket,
     loadBracketInfo,
-    submissionCompleted,
-    secondColumn,
-    inputWinner,
-    inputWinnerSeed,
-    inputName,
-    inputSize,
-    active,
-    name,
     size,
-    teams,
     title,
     date,
     format,
@@ -96,8 +83,8 @@ const BraketModal = ({
     brackets4,
     brackets5,
     bracketID,
-    round,
-    value
+    round
+
 }) => {
 
     const roundAbove8 =

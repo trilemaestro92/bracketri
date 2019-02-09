@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css';
 
 const SignUpForm = ({
   onSubmit,
@@ -11,51 +10,44 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
-    <form action="" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+    <div className='login-form'>
+      <style>{`
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+height: 100%;
+}
+`}</style>
+      <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+          </Header>
+          <Form size='large'>
+            <Segment style={{background:'#f8f8f9'}} stacked>
+              <Form.Input fluid icon='user' iconPosition='left'  placeholder='Username' name="name" onChange={onChange} />
+              <p id='select' className='err'>{errors.name}</p>
+              <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' name="email" onChange={onChange}   />
+              <p id='select2' className='err'>{errors.email}</p>
+              <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' name="password"  onChange={onChange}  />
+              <p id='select3' className='err'>{errors.password}</p>
+              {/* <Form.Input fluid icon='lock' iconPosition='left' placeholder='Confirm Password' type='password' onChange={this.pass2Change} /> */}
 
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+              <Button basic  fluid size='large' onClick={onSubmit}>
+                Sign Up
+</Button>
+            </Segment>
+          </Form>
+          <Message>
+            <p id='error-message'>
+              Already have an Account?  <Link to="/login">Log in</Link>
+            </p>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </div>
+  )
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
-          name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
-        />
-      </div>
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
-        />
-      </div>
-
-      <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
-      </div>
-
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
-    </form>
-  </Card>
-);
 
 SignUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
