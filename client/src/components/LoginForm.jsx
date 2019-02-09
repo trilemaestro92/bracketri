@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import '../App.css';
+
 
 const LoginForm = ({
   onSubmit,
@@ -13,40 +13,44 @@ const LoginForm = ({
   user,
   toggleAuthenticateStatus
 }) => (
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
+    <div className='login-form'>
+      <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+      <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+            {successMessage && <p className="success-message">{successMessage}</p>}
+            {errors.summary && <p className="error-message">{errors.summary}</p>}
+          </Header>
+          <Form size='large'>
+            <Segment style={{ background: '#f8f8f9' }} stacked>
+              <Form.Input fluid icon='user' iconPosition='left' placeholder='Email' name='email' onChange={onChange} />
+              <p id='login-select' className='err'>{errors.email}</p>
+              <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' name='password' type='password' onChange={onChange} />
+              <p id='login-select' className='err'>{errors.password}</p>
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
-        />
-      </div>
 
-      <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
-      </div>
+              <Button basic fluid size='large' onClick={onSubmit}>
+                Login
+             </Button>
+            </Segment>
+          </Form>
+          <Message>
+            <p id='error-message'>
+              Don't have an account? <Link to={'/signup'}>Create one</Link>
+            </p>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </div>
+  )
 
-      <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
-    </form>
-  </Card>
-);
+
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,

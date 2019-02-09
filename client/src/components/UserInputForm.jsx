@@ -39,8 +39,7 @@ const UserInputForm = ({
     inputName,
     inputSize,
     name,
-    size,
-    teams
+    size
 }) => {
 
 

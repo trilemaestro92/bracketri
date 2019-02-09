@@ -24,15 +24,7 @@ const MatchUp = (props) => (
         </div>
     </div>
 )
-const SoloMatchup = (props) => (
-    <div className='matchup' >
-        <div className='team'>
-            <span>
-                {props.team}
-            </span>
-        </div>
-    </div>
-)
+
 
 const sizeOptions = [
     { key: '2', text: '2', value: 2 },
