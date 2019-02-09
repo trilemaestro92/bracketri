@@ -16,7 +16,7 @@ The back-end uses Node.JS, MongoDB, Express, and React Passort.
 * Users can advance round by round picking the team to advance.
 * Users can delete a tournament.
 
-# how to run the app
+# How to run the app
 
 You will need to have the following installed run the app:
 
