@@ -448,7 +448,7 @@ class DashboardPage extends React.Component {
       team[rownum][letter].name = value;
       team[rownum][letter].seed = seedOption;
     }
-    console.log(this.state.fifthColumn)
+    console.log(this.state.fourthColumn)
   }
   handleChangeMatchupRound4 = (e, { value, rownum, letter, size, options }) => {
     // console.log(rownum, letter, value, size, options)
@@ -600,7 +600,7 @@ class DashboardPage extends React.Component {
       },
     ).catch(function (e) { console.log(e) })
     if (teamsize >= 9) {
-      API.editBracket3(
+      API.editBracket4(
         {
           userData: e.target.id,
           data: this.state.fifthColumn
@@ -696,6 +696,7 @@ class DashboardPage extends React.Component {
           brackets2={input.brackets.col2}
           brackets3={input.brackets.col3}
           brackets4={input.brackets.col4}
+          brackets5={input.brackets.col5}
           bracketID={input._id}
           submissionCompleted={submissionCompleted}
           handleDeleteBracket={this.handleDeleteBracket}

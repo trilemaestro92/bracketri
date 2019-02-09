@@ -68,6 +68,10 @@ body {
   display:grid;
   align-content: center;
 }
+.column5{
+  display:grid;
+  align-content: center;
+}
 .matchup{
   background-color: rgba(0, 180, 235, 0.06);
   width: 11em;
@@ -129,7 +133,7 @@ body {
 }
 .user-team-container{
   display: grid;
-  grid-template-columns: repeat(4,14.6em);
+  grid-template-columns: repeat(5,14.4em);
   grid-template-rows: repeat(20,25px);
   grid-template-rows: 1fr;
   padding:24px 24px;

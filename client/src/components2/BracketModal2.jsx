@@ -94,6 +94,7 @@ const BraketModal = ({
     brackets2,
     brackets3,
     brackets4,
+    brackets5,
     bracketID,
     round,
     value
@@ -458,37 +459,37 @@ const BraketModal = ({
                             />
                         </Menu>
                         : size === 8 && round === 1 ?
-                        <Menu size='mini' compact>
-                            <Dropdown
-                                size={size}
-                                rownum='row1'
-                                letter='b'
-                                onChange={handleChangeMatchupRound2}
-                                options={options({ brackets: brackets2, rowNum: 'row2' })}
-                                placeholder='Select Winner'
-                                item
-                            />
-                        </Menu>
-                        : size >= 5 && size <= 8 && round >= 2 ? brackets3.row1.b.name
-                            : size === 3 && round < 1 ?
-                                <Menu size='mini' compact>
-                                    <Dropdown
-                                        size={size}
-                                        rownum='row1'
-                                        letter='b'
-                                        onChange={handleChangeMatchup}
-                                        options={options({ brackets, rowNum: 'row2' })}
-                                        placeholder='Select Winner'
-                                        item
-                                    />
-                                </Menu>
-                                : size === 3 && round > 0 ? brackets2.row1.b.name
-                                : brackets2.row1.b.name)}
+                            <Menu size='mini' compact>
+                                <Dropdown
+                                    size={size}
+                                    rownum='row1'
+                                    letter='b'
+                                    onChange={handleChangeMatchupRound2}
+                                    options={options({ brackets: brackets2, rowNum: 'row2' })}
+                                    placeholder='Select Winner'
+                                    item
+                                />
+                            </Menu>
+                            : size >= 5 && size <= 8 && round >= 2 ? brackets3.row1.b.name
+                                : size === 3 && round < 1 ?
+                                    <Menu size='mini' compact>
+                                        <Dropdown
+                                            size={size}
+                                            rownum='row1'
+                                            letter='b'
+                                            onChange={handleChangeMatchup}
+                                            options={options({ brackets, rowNum: 'row2' })}
+                                            placeholder='Select Winner'
+                                            item
+                                        />
+                                    </Menu>
+                                    : size === 3 && round > 0 ? brackets2.row1.b.name
+                                        : brackets2.row1.b.name)}
                 seed2={(size === 2 ? brackets.row1.b.seed
                     : size === 3 && round < 1 ? brackets.row2.a.seed + ' | ' + brackets.row2.b.seed
-                            : size >= 5 && size <= 7 && round === 1 ? brackets2.row3.a.seed + ' | ' + brackets2.row4.a.seed
+                        : size >= 5 && size <= 7 && round === 1 ? brackets2.row3.a.seed + ' | ' + brackets2.row4.a.seed
                             : size === 8 && round === 1 ? brackets2.row2.a.seed + ' | ' + brackets2.row2.b.seed
-                                : size === 3 && round > 0  && brackets2.row1.b.name === brackets.row2.a.name ? brackets.row2.a.seed
+                                : size === 3 && round > 0 && brackets2.row1.b.name === brackets.row2.a.name ? brackets.row2.a.seed
                                     : size >= 5 && size <= 8 && round >= 2 ? brackets3.row1.b.seed
                                         : brackets.row2.b.seed
                 )}
@@ -866,6 +867,50 @@ const BraketModal = ({
             />
         </div>
     )
+    const over8Champion = () => (
+        <div>
+            <MatchUp
+                team={(
+                    size >= 9 && size <= 16 && round === 2 ?
+                        <Menu size='mini' compact>
+                            <Dropdown
+                                size={size}
+                                rownum='row1'
+                                letter='a'
+                                onChange={handleChangeMatchupRound3}
+                                options={options({ brackets: brackets3, rowNum: 'row1' })}
+                                placeholder='Select Winner'
+                                item
+                            />
+                        </Menu>
+                        : size >= 9 && size <= 16 && round >= 3 ? brackets4.row1.a.name
+                            : null)}
+                seed={(size === 2 ? brackets.row1.a.seed
+                    : size >= 9 && size <= 16 && round === 2 ? brackets3.row1.a.seed + ' | ' + brackets3.row1.b.seed
+                        : size >= 9 && size <= 16 && round >= 3 ? brackets4.row1.a.seed
+                            : null)}
+                team2={(
+                    size >= 9 && size <= 16 && round === 2 ?
+                        <Menu size='mini' compact>
+                            <Dropdown
+                                size={size}
+                                rownum='row1'
+                                letter='b'
+                                onChange={handleChangeMatchupRound3}
+                                options={options({ brackets: brackets3, rowNum: 'row2' })}
+                                placeholder='Select Winner'
+                                item
+                            />
+                        </Menu>
+                        : size >= 9 && size <= 16 && round >= 3 ? brackets4.row1.b.name
+                            : null)}
+                seed2={(
+                    size >= 9 && size <= 16 && round === 2 ? brackets3.row2.a.seed + ' | ' + brackets3.row2.b.seed
+                        : size >= 9 && size <= 16 && round >= 3 ? brackets4.row1.b.seed
+                            : null)}
+            />
+        </div>
+    )
     const threeWinner = () => (
         <div>
             <SingleMatchUp
@@ -917,6 +962,31 @@ const BraketModal = ({
             />
         </div>
     )
+    const over8Winner = () => (
+        <div>
+            <SingleMatchUp
+                team={(size >=9 && size<=16 && round === 3 ?
+                    <Menu size='mini' compact>
+                        <Dropdown
+                            size={size}
+                            rownum='row1'
+                            letter='a'
+                            onChange={handleChangeMatchupRound4}
+                            options={options({ brackets: brackets4, rowNum: 'row1' })}
+                            placeholder='Select Winner'
+                            item
+                        />
+                    </Menu>
+                    : brackets5.row1.a.name
+                )}
+                seed={
+                    (
+                        size >=9 && size<=16 && round === 3 ? brackets4.row1.a.seed + ' | ' + brackets4.row1.b.seed
+                        : brackets5.row1.a.seed
+                    )}
+            />
+        </div>
+    )
     return (
         <div style={{ marginBottom: '10px' }}>
             <Segment>
@@ -964,6 +1034,10 @@ const BraketModal = ({
                                 </div>
                                 <div className='column4'>
                                     {(size >= 5 && size <= 8 && round >= 2 ? oneTeam() : null)}
+                                    {(size >= 9 && size <= 16 && round >= 2 ? over8Champion() : null)}
+                                </div>
+                                <div className='column5'>
+                                    {(size >= 9 && size <= 16 && round >= 3 ? over8Winner() : null)}
                                 </div>
                             </div>
                         </Container>
@@ -1009,16 +1083,16 @@ const BraketModal = ({
                                 {(size >= 4 && size <= 8 ? 'Submit Champion' : 'Submit Round 3')}
                             </Button>
                             : null}
-                        {/* {round === 2 && size > 8 || round === 3 && size > 8  ?
+                        {round === 3 && size > 8  ?
                             <Button
                                 teamsize={size}
                                 id={bracketID}
                                 size='small'
                                 color='green'
                                 onClick={onSubmitChangeRound4}>
-                                {(size >= 9 || size <= 16 ? 'Submit Champion' : 'Submit Round 4')}
+                                Submit Champion
                             </Button>
-                            : null} */}
+                            : null}
                     </Modal.Actions>
                 </Modal>
             </Segment>

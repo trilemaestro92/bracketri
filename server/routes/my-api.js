@@ -89,5 +89,18 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+  app.put('/my-api/edit-brackets-round4/:index', function (req, res) {
+    console.log("The userId is: " + req.params.index)
+    db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
+      $set: {
+        "brackets.col5": req.body
+      }
+    }).then(function (newBracket) {
+      console.log(newBracket)
+      res.json(newBracket)
+    }).catch(function (err) {
+      res.json(err);
+    });
+  });
 
 }
