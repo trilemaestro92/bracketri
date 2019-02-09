@@ -6,7 +6,7 @@ Heroku Link: https://project-bracketri.herokuapp.com/
 This application allow users to create/edit/delete tournaments.(Up to 16)
 
 The front-end uses React, React Semantic.
-The back-end uses Node.JS, NPM, MongoDB, Express, and React Passort. 
+The back-end uses Node.JS, MongoDB, Express, and React Passort. 
 * React Passport packages: axios, bcryptjs, jsonwebtoken, mongoose, passport, react-router-dom, validator  
 
 * Users can create a profile with user authenication. *Please don't use your actual password*
@@ -21,7 +21,9 @@ You will need to have the following installed run the app:
 * Node.js
 * Express
 * Moment
-* Mysql
+* Mongoose
+* Axios
+
 
 ## Deployment
 
