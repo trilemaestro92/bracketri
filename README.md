@@ -7,14 +7,7 @@ This application allow users to create/edit/delete tournaments.(Up to 16)
 
 The front-end uses React, React Semantic.
 The back-end uses Node.JS, NPM, MongoDB, Express, and React Passort. 
-* React Passport packages: 
-  *axios
-  *bcryptjs
-  *jsonwebtoken
-  *mongoose
-  *passport
-  *react-router-dom
-  *validator  
+* React Passport packages: axios, bcryptjs, jsonwebtoken, mongoose, passport, react-router-dom, validator  
 
 * Users can create a profile with user authenication. *Please don't use your actual password*
 * Users can create a tournaments with customizeable names .
