@@ -43,6 +43,5 @@ $ cd client && yarn install
 $ cd .. && yarn start
 ```
 
-Browse to http://localhost:8080/
 
 
