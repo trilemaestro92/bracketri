@@ -9,6 +9,8 @@ The front-end uses React, React Semantic.
 The back-end uses Node.JS, MongoDB, Express, and React Passort. 
 * React Passport packages: axios, bcryptjs, jsonwebtoken, mongoose, passport, react-router-dom, validator  
 
+# Build a Bracket
+
 * Users can create a profile with user authenication. *Please don't use your actual password*
 * Users can create a tournaments with customizeable names .
 * Users can advance round by round picking the team to advance.
