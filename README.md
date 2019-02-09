@@ -1,6 +1,6 @@
 Heroku Link: https://project-bracketri.herokuapp.com/
 
-# My Todo
+# Bracketri
 ![]()
 
 This application allow users to create/edit/delete tournaments.(Up to 16)
