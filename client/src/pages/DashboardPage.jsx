@@ -657,8 +657,6 @@ class DashboardPage extends React.Component {
             this.setState({ fourthColumn: data[i].brackets.col1 })
           }
         }
-        // console.log(this.state.thirdColumn)
-        // console.log(this.state.thirdColumn)
       })
 
   }
