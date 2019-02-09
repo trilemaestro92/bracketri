@@ -1,7 +1,7 @@
 Heroku Link: https://project-bracketri.herokuapp.com/
 
 # Bracketri
-![]()
+![]('./client/public/assets/Bracketri.JPG')
 
 This application allow users to create/edit/delete tournaments.(Up to 16)
 
