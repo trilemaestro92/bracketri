@@ -8,7 +8,7 @@ import {
     PrivateRoute,
     PropsRoute,
     LoggedOutRoute
-} from './components2/Routes';
+} from './components/Routes';
 
 import HomePage from './components/HomePage.jsx';
 import Sample from './components/InputForm2.jsx'
