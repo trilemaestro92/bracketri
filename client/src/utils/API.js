@@ -21,5 +21,7 @@ export default {
    editBracket2: userData =>
       axios.put(`/my-api/edit-brackets-round2/${userData.userData}`, userData.data),
    editBracket3: userData =>
-      axios.put(`/my-api/edit-brackets-round3/${userData.userData}`, userData.data)
+      axios.put(`/my-api/edit-brackets-round3/${userData.userData}`, userData.data),
+   editBracket4: userData =>
+      axios.put(`/my-api/edit-brackets-round4/${userData.userData}`, userData.data)
 };
