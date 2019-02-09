@@ -322,7 +322,7 @@ class DashboardPage extends React.Component {
   /**
    * This method will be executed after initial rendering.
    */
-  componentDidMount() {
+  componentDidMount(e) {
     API.dashboard(Auth.getToken())
       .then(res => {
         this.setState({
@@ -330,9 +330,10 @@ class DashboardPage extends React.Component {
           user: res.data.user
         });
         this.getUserBrackets()
-
       })
-  }
+
+
+    }
   handleNameChange = (e, { value }) => {
     this.setState({ inputName: value });
   }
@@ -467,7 +468,7 @@ class DashboardPage extends React.Component {
       round: 0,
       brackets: this.state.teams
     })
-    this.componentDidMount()
+    // this.componentDidMount()
     window.location.href = '/dashboard'
   }
   onSubmitChangeRound1 = (e, { teamsize }) => {
@@ -628,7 +629,9 @@ class DashboardPage extends React.Component {
     return data
   }
   loadBracketInfo = (e) => {
+    // debugger
     const eventType = e.target.id
+    console.log(eventType)
     API.getPopulatedBracket()
       .then(allData => {
         const data = allData.data
@@ -640,6 +643,7 @@ class DashboardPage extends React.Component {
         }
         return dataList[0]
       }).then(data => {
+        // debugger
         for (let i = 0; i < data.length; i++) {
           if
             (data[i]._id === eventType && data[i].size <= 15 && data[i].size >= 9
@@ -653,8 +657,8 @@ class DashboardPage extends React.Component {
             this.setState({ fourthColumn: data[i].brackets.col1 })
           }
         }
-        // console.log(this.state.secondColumn)
-        console.log(this.state.thirdColumn)
+        // console.log(this.state.thirdColumn)
+        // console.log(this.state.thirdColumn)
       })
 
   }

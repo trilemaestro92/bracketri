@@ -237,7 +237,7 @@ const BraketModal = ({
                 seed={(size >= 5 && size <= 8 ? brackets.row3.a.seed
                     : size >= 9 && size <= 14 ? brackets.row5.a.seed
                         : size === 15 && round < 1 ? brackets.row5.a.seed + ' | ' + brackets.row5.b.seed
-                            : brackets2.row5.a.name)}
+                            : brackets2.row5.a.seed)}
                 team2={(size >= 5 && size <= 8 ? brackets.row3.b.name : size >= 10 && size <= 15 && round < 1 ?
                     <Menu size='mini' compact>
                         <Dropdown
@@ -255,7 +255,7 @@ const BraketModal = ({
                 seed2={(size >= 5 && size <= 8 ? brackets.row3.b.seed
                     : size === 9 ? brackets.row6.a.seed
                         : size >= 10 && size <= 15 && round < 1 ? brackets.row6.a.seed + ' | ' + brackets.row6.b.seed
-                            : brackets2.row6.a.name)}
+                            : brackets2.row6.a.seed)}
             />
             <MatchUp style={(size === 5 ? { display: 'none' } : null)}
                 team={(size >= 5 && size <= 8 ? brackets.row4.a.name
