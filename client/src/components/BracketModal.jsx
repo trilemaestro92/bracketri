@@ -982,7 +982,7 @@ const BraketModal = ({
                         onClick={loadBracketInfo}
                         id={bracketID}
                         style={{ boxShadow: 'none', fontSize: '12px', fontWeight: 'bold' }} fluid basic>
-                        <div style={{ marginBottom: '20px' }}><Icon size='large' name='trophy'></Icon></div>
+                        <div style={{ marginBottom: '20px' }} id={bracketID}><Icon id={bracketID} size='large' name='trophy'></Icon></div>
                         <span style={{ fontSize: '26px', fontWeight: 'bolder' }}>
                             {title}</span> / {size} teams / {date}
                     </Button>}>
