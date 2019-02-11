@@ -30,7 +30,7 @@ const NoMatch = ({ location }) => (
 const trigger = (e) => {
     return (
         <span>
-            <Icon name='user' />Hello {e.toString()}
+            <Icon name='user' />Hello, {e.toString()}
         </span>
     )
 }
@@ -52,9 +52,10 @@ class App extends Component {
     getUserInfo = () => {
         API.dashboard(Auth.getToken())
             .then(res => {
+                console.log(this.state.user)
                 this.setState({
                     user: res.data.user.name
-                });
+                })
             })
     }
 
@@ -67,6 +68,7 @@ class App extends Component {
     }
     handleLoginClick = () => {
         window.location.href = '/login'
+        
     }
     logoClick = () => {
         window.location.href = '/'
@@ -102,7 +104,11 @@ class App extends Component {
                                     </Menu.Item>
 
                                     <Menu.Item position='right' style={{ marginRight: '2.5em' }}>
-                                        <Dropdown item simple trigger={trigger(this.state.user)} >
+                                        <Dropdown 
+                                        item 
+                                        simple 
+                                        trigger={trigger(this.state.user)} 
+                                        >
                                             <DropdownMenu>
                                                 <Dropdown.Item onClick={this.logoutClick}>Log-out</Dropdown.Item>
                                             </DropdownMenu>
@@ -127,7 +133,7 @@ class App extends Component {
                         <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} handleClickSample={this.handleClickSample} />
                         <PropsRoute exact path="/sample" component={Sample} />
                         <PrivateRoute path="/dashboard" component={DashboardPage} />
-                        <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} />
+                        <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} getUserInfo={this.getUserInfo} />
                         <LoggedOutRoute path="/signup" component={SignUpPage2} />
                         <Route path="/logout" component={LogoutFunction} />
                         <Route component={NoMatch}/>

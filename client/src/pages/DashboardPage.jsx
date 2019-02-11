@@ -468,7 +468,6 @@ class DashboardPage extends React.Component {
       round: 0,
       brackets: this.state.teams
     })
-    // this.componentDidMount()
     window.location.href = '/dashboard'
   }
   onSubmitChangeRound1 = (e, { teamsize }) => {
@@ -601,7 +600,6 @@ class DashboardPage extends React.Component {
     API.deleteBracket(
       { userData: event.target.id }
     )
-    this.componentDidMount()
     window.location.href = '/dashboard'
   }
   openModal = () => {

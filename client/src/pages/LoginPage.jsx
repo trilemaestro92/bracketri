@@ -49,6 +49,7 @@ class LoginPage extends React.Component {
 
         // update authenticated state
         this.props.toggleAuthenticateStatus()
+        this.props.getUserInfo()
         
         // redirect signed in user to dashboard
         this.props.history.push('/dashboard');
@@ -74,7 +75,6 @@ class LoginPage extends React.Component {
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
-    console.log(user)
     this.setState({
       user
     });
