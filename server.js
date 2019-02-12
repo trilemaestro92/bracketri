@@ -8,7 +8,7 @@ const logger = require('morgan')
 
 const PORT = process.env.PORT || 3001;
 
-const uri = process.env.MONGODB_URI || config.dbUri;
+const uri = process.env.MONGODB_URI || config.dbUri || config.mLab;
 
 mongoose.connect(uri);
 mongoose.Promise = global.Promise;
