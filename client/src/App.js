@@ -10,7 +10,7 @@ import {
     LoggedOutRoute
 } from './components/Routes';
 
-import HomePage from './components/HomePage.jsx';
+import HomePage from './pages/HomePage.jsx';
 import Sample from './components/InputForm2.jsx'
 import LoginPage from './pages/LoginPage.jsx';
 import LogoutFunction from './pages/LogoutFunction.jsx';
@@ -140,7 +140,7 @@ class App extends Component {
 
                     <span style={{ fontWeight: '600', width: '100%', bottom: '0', fontSize: '11px', color: 'gray' }}>
                         &copy; Tri Nguyen. All rights reserved.
-            </span>
+                    </span>
                 </div>
             </Router>
         );

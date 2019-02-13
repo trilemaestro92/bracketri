@@ -322,7 +322,7 @@ class DashboardPage extends React.Component {
   /**
    * This method will be executed after initial rendering.
    */
-  componentDidMount(e) {
+  componentDidMount() {
     API.dashboard(Auth.getToken())
       .then(res => {
         this.setState({
@@ -331,9 +331,14 @@ class DashboardPage extends React.Component {
         });
         this.getUserBrackets()
       })
-
-
+  }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.userID !== prevProps.userID) {
+      console.log('hi')
+      this.fetchData(this.props.userID);
     }
+  }
   handleNameChange = (e, { value }) => {
     this.setState({ inputName: value });
   }
@@ -470,7 +475,7 @@ class DashboardPage extends React.Component {
     })
     window.location.href = '/dashboard'
   }
-  onSubmitChangeRound1 = (e, { teamsize }) => {
+  onSubmitChangeRound1 = (e, { teamsize, id }) => {
     const newChange = {
       round: 1
     }
@@ -509,8 +514,9 @@ class DashboardPage extends React.Component {
         }
       ).catch(function (e) { console.log(e) })
     }
-    this.componentDidMount()
-    window.location.href = '/dashboard'
+    
+    // console.log(id)
+    // window.location.href = '/dashboard'
   }
   onSubmitChangeRound2 = (e, { teamsize }) => {
     const newChange = {
@@ -544,7 +550,6 @@ class DashboardPage extends React.Component {
         }
       ).catch(function (e) { console.log(e) })
     }
-    this.componentDidMount()
     window.location.href = '/dashboard'
   }
   onSubmitChangeRound3 = (e, { teamsize }) => {
@@ -572,7 +577,6 @@ class DashboardPage extends React.Component {
         }
       ).catch(function (e) { console.log(e) })
     }
-    this.componentDidMount()
     window.location.href = '/dashboard'
   }
   onSubmitChangeRound4 = (e, { teamsize }) => {
@@ -593,7 +597,6 @@ class DashboardPage extends React.Component {
         }
       ).catch(function (e) { console.log(e) })
     }
-    this.componentDidMount()
     window.location.href = '/dashboard'
   }
   handleDeleteBracket = (event) => {
