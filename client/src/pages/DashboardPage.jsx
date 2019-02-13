@@ -314,9 +314,9 @@ class DashboardPage extends React.Component {
     bracketInfo: {},
     format: {
       one: ['Championship', 'Winner'],
-      two: ['round 1', 'Championship', 'Winner'],
-      eight: ['round 1', 'round 2', 'Championship', 'Winner'],
-      sixteen: ['round 1', 'round 2', 'round 3', 'Championship', 'Winner']
+      two: ['Semis', 'Championship', 'Winner'],
+      eight: ['Round 1', 'Semis', 'Championship', 'Winner'],
+      sixteen: ['Round 1', 'Round 2', 'Semis', 'Championship', 'Winner']
     }
   }
   /**
@@ -335,7 +335,6 @@ class DashboardPage extends React.Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.userID !== prevProps.userID) {
-      console.log('hi')
       this.fetchData(this.props.userID);
     }
   }
@@ -514,9 +513,9 @@ class DashboardPage extends React.Component {
         }
       ).catch(function (e) { console.log(e) })
     }
-    
+
     // console.log(id)
-    // window.location.href = '/dashboard'
+    window.location.href = '/dashboard'
   }
   onSubmitChangeRound2 = (e, { teamsize }) => {
     const newChange = {
@@ -695,6 +694,12 @@ class DashboardPage extends React.Component {
     })
     return (
       <Grid stackable>
+        <style>{`
+      body > div,
+      body > div  {
+        height: 100%;
+      }
+    `}</style>
         <Grid.Column computer={4} mobile={6} tablet={6}>
           <Segment className='manager-card'>
             <p style={{ display: 'flex', fontWeight: '600', justifyContent: 'left' }}>League Manager</p>

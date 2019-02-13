@@ -11,7 +11,7 @@ body {
 .grid{
   display: grid;
   grid-template-rows: 70px 1fr;
-  height: 100vh;
+  height: 100%;
 }
 
 .content-container{
@@ -117,6 +117,9 @@ body {
   overflow: auto;
 }
 
+.center.aligned.middle.column, .middle.aligned.column  {
+    align-items: center
+}
 
 
 

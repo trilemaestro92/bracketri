@@ -144,6 +144,13 @@ export default class BracketSample extends Component {
 
         return (
             <div className='outer-container'>
+                 <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
                 <div className='content-container' style={{ width: '600px' }}>
                     <div style={{ marginTop: '50px' }}>
                         <Form onSubmit={this.onSubmit} size='small'>
