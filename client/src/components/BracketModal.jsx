@@ -1,14 +1,35 @@
 import React from 'react';
-import { Modal, Menu, Dropdown, Segment, Header, Button, Icon, Container } from 'semantic-ui-react';
+import { Modal, Menu, Dropdown, Segment, Header, Button, Icon, Container, Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../App.css'
 import { options, options2, options3 } from './Options'
 
+const style = {
+    roundHeader: {
+        fontWeight: 'bold',
+        textTransform: 'capitalize'
+    },
+    divContainer: {
+        marginBottom: '10px' 
+    },
+    triggerButton: {
+        boxShadow: 'none', 
+        fontSize: '12px', 
+        fontWeight: 'bold' 
+    },
+    marinBottom: {
+        marginBottom: '20px'
+    },
+    span:{
+        fontSize: '26px', 
+        fontWeight: 'bolder' 
+    }
+}
 
 const RoundHead = (props) => (
-    <div style={{ fontWeight: 'bold', textTransform: 'capitalize', display: 'grid', justifyContent: 'left', }} >
+    <Grid.Column style={style.roundHeader}>
         {props.format}
-    </div>
+    </Grid.Column>
 );
 
 const MatchUp = (props) => (
@@ -87,22 +108,18 @@ const BraketModal = ({
 
 }) => {
 
-    const roundAbove8 =
-        format.sixteen.map((name, i) => {
-            return (<RoundHead key={i} format={name} />)
-        })
-    const roundAbove4 =
-        format.eight.map((name, i) => {
-            return (<RoundHead key={i} format={name} />)
-        })
-    const roundAbove2 =
-        format.two.map((name, i) => {
-            return (<RoundHead key={i} format={name} />)
-        })
-    const round2 =
-        format.one.map((name, i) => {
-            return (<RoundHead key={i} format={name} />)
-        })
+    const round2 = format.one.map((name, i) => {
+        return (<RoundHead key={i} format={name} />)
+    })
+    const roundAbove2 = format.two.map((name, i) => {
+        return (<RoundHead key={i} format={name} />)
+    })
+    const roundAbove4 = format.eight.map((name, i) => {
+        return (<RoundHead key={i} format={name} />)
+    })
+    const roundAbove8 = format.sixteen.map((name, i) => {
+        return (<RoundHead key={i} format={name} />)
+    })
     const overEight = () => (
         <div>
             <MatchUp
@@ -952,7 +969,7 @@ const BraketModal = ({
     const over8Winner = () => (
         <div>
             <SingleMatchUp
-                team={(size >=9 && size<=16 && round === 3 ?
+                team={(size >= 9 && size <= 16 && round === 3 ?
                     <Menu size='mini' compact>
                         <Dropdown
                             size={size}
@@ -968,70 +985,70 @@ const BraketModal = ({
                 )}
                 seed={
                     (
-                        size >=9 && size<=16 && round === 3 ? brackets4.row1.a.seed + ' | ' + brackets4.row1.b.seed
-                        : brackets5.row1.a.seed
+                        size >= 9 && size <= 16 && round === 3 ? brackets4.row1.a.seed + ' | ' + brackets4.row1.b.seed
+                            : brackets5.row1.a.seed
                     )}
             />
         </div>
     )
     return (
-        <div style={{ marginBottom: '10px' }}>
+        <div style={style.divContainer}>
             <Segment>
                 <Modal size='large' closeIcon trigger={
                     <Button
                         onClick={loadBracketInfo}
                         id={bracketID}
-                        style={{ boxShadow: 'none', fontSize: '12px', fontWeight: 'bold' }} fluid basic>
-                        <div style={{ marginBottom: '20px' }} id={bracketID}><Icon id={bracketID} size='large' name='trophy'></Icon></div>
-                        <span style={{ fontSize: '26px', fontWeight: 'bolder' }}>
+                        style={style.triggerButton} fluid basic>
+                        <div style={style.marinBottom} id={bracketID}><Icon id={bracketID} size='large' name='trophy'></Icon></div>
+                        <span style={style.span}>
                             {title}</span> / {size} teams / {date}
                     </Button>}>
                     <Header content={title + ' Matchups'} />
                     <div className='user-outer-container' >
-                        <Container textAlign='justified'>
-                            <div className='user-round-container'>
-                                {(size > 8 ? roundAbove8 : null)}
-                                {(size > 4 && size <= 8 ? roundAbove4 : null)}
-                                {(size > 2 && size <= 4 ? roundAbove2 : null)}
-                                {(size > 1 && size <= 2 ? round2 : null)}
-                            </div>
-                            <div className='user-team-container'>
-                                <div className='column1' >
-                                    {(size > 8 ? overEight() : null)}
-                                    {(size >= 5 && size <= 8 ? overFour() : null)}
-                                    {(size > 2 && size <= 4 ? overTwo() : null)}
-                                    {(size === 2 ? overOne() : null)}
-                                </div>
-                                <div className='column2'>
-                                    {(size >= 9 && size <= 15 ? overFour() : null)}
-                                    {(size === 16 ? sixteenRound2() : null)}
-                                    {(size === 8 ? eightRound2() : null)}
-                                    {(size === 4 ? fourRound2() : null)}
-                                    {(size >= 5 && size <= 7 ? overTwo() : null)}
-                                    {(size === 3 ? overOne() : null)}
-                                    {(size === 2 ? oneTeam() : null)}
-
-                                </div>
-                                <div className='column3'>
-                                    {size === 3 && round >= 1 ? threeWinner() : null}
-                                    {size === 4 && round >= 1 ? fourWinner() : null}
-                                    {(size >= 5 && size <= 8 && round >= 1 ? overOne() : null)}
-                                    {(size >= 9 && size <= 16 && round >= 1 ? fourRound3() : null)}
-
-                                </div>
-                                <div className='column4'>
-                                    {(size >= 5 && size <= 8 && round >= 2 ? oneTeam() : null)}
-                                    {(size >= 9 && size <= 16 && round >= 2 ? over8Champion() : null)}
-                                </div>
-                                <div className='column5'>
-                                    {(size >= 9 && size <= 16 && round >= 3 ? over8Winner() : null)}
-                                </div>
-                            </div>
+                        <Container>
+                            <Grid columns={5} >
+                                <Grid.Row stretched divided>
+                                    {(size > 8 ? roundAbove8 : null)}
+                                    {(size > 4 && size <= 8 ? roundAbove4 : null)}
+                                    {(size > 2 && size <= 4 ? roundAbove2 : null)}
+                                    {(size > 1 && size <= 2 ? round2 : null)}
+                                </Grid.Row>
+                                <Grid.Row stretched >
+                                    <Grid.Column  verticalAlign='middle' textAlign='center'>
+                                        {(size > 8 ? overEight() : null)}
+                                        {(size >= 5 && size <= 8 ? overFour() : null)}
+                                        {(size > 2 && size <= 4 ? overTwo() : null)}
+                                        {(size === 2 ? overOne() : null)}
+                                    </Grid.Column>
+                                    <Grid.Column verticalAlign='middle'>
+                                        {(size >= 9 && size <= 15 ? overFour() : null)}
+                                        {(size === 16 ? sixteenRound2() : null)}
+                                        {(size === 8 ? eightRound2() : null)}
+                                        {(size === 4 ? fourRound2() : null)}
+                                        {(size >= 5 && size <= 7 ? overTwo() : null)}
+                                        {(size === 3 ? overOne() : null)}
+                                        {(size === 2 ? oneTeam() : null)}
+                                    </Grid.Column>
+                                    <Grid.Column verticalAlign='middle'>
+                                        {size === 3 && round >= 1 ? threeWinner() : null}
+                                        {size === 4 && round >= 1 ? fourWinner() : null}
+                                        {(size >= 5 && size <= 8 && round >= 1 ? overOne() : null)}
+                                        {(size >= 9 && size <= 16 && round >= 1 ? fourRound3() : null)}
+                                    </Grid.Column>
+                                    <Grid.Column verticalAlign='middle'>
+                                        {(size >= 5 && size <= 8 && round >= 2 ? oneTeam() : null)}
+                                        {(size >= 9 && size <= 16 && round >= 2 ? over8Champion() : null)}
+                                    </Grid.Column>
+                                    <Grid.Column verticalAlign='middle'>
+                                        {(size >= 9 && size <= 16 && round >= 3 ? over8Winner() : null)}
+                                    </Grid.Column>
+                                </Grid.Row>
+                            </Grid>
                         </Container>
                     </div>
                     <Modal.Actions>
                         <Button
-                            style={{ marginBottom: '10px' }}
+                            style={style.divContainer}
                             id={bracketID}
                             size='mini'
                             floated='left'
@@ -1070,7 +1087,7 @@ const BraketModal = ({
                                 {(size >= 4 && size <= 8 ? 'Submit Champion' : 'Submit Round 3')}
                             </Button>
                             : null}
-                        {round === 3 && size > 8  ?
+                        {round === 3 && size > 8 ?
                             <Button
                                 teamsize={size}
                                 id={bracketID}

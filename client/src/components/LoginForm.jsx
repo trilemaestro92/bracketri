@@ -9,9 +9,7 @@ const LoginForm = ({
   onSubmit,
   onChange,
   errors,
-  successMessage,
-  user,
-  toggleAuthenticateStatus
+  successMessage
 }) => (
     <div className='login-form'>
       <style>{`
