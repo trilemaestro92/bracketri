@@ -150,11 +150,22 @@ body {
 }
 .user-team{
   color: rgb(72, 73, 74);
-    text-align: left;
-    margin-bottom: 1px;
+  text-align: left;
+  margin-bottom: 1px;
+  font-size: 16px
 }
 
 .input-width{
   width: 145px;
   margin-right: 45px; 
+}
+.matchupA{
+  font-size: 16px
+}
+
+
+@media only screen and (max-width: 600px) { 
+  .matchupA{
+    font-size: 16px
+  }
 }
