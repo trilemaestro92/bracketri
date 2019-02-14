@@ -5,6 +5,7 @@ import TeamOver8Input from './TeamOver8Input.jsx'
 import TeamOver4Input from './TeamOver4Input.jsx'
 import TeamOver2Input from './TeamOver2Input.jsx'
 import TeamOver1Input from './TeamOver1Input.jsx'
+import CategoriesInput from './CategoriesInput.jsx'
 import '../App.css'
 
 
@@ -32,6 +33,7 @@ const UserInputForm = ({
     openModal,
     handleNameChange,
     handleSizeChange,
+    handleCategoryChange,
     handleTeamOver8,
     handleTeamOver4,
     handleTeamOver2,
@@ -39,7 +41,8 @@ const UserInputForm = ({
     inputName,
     inputSize,
     name,
-    size
+    size,
+    category
 }) => {
 
 
@@ -77,12 +80,21 @@ const UserInputForm = ({
                                         <Form.Button color='red' content='Please fill out' disabled /> :
                                         <Form.Button color='teal' content='Generate' />
                                     )}
+                                    {(size === 0 ? null :
+                                        <p> Add Scoreboard ? (optional)</p>   
+                                    )}
+                                    {(size === 0 ? null:
+                                        <CategoriesInput
+                                            handleCategoryChange1={handleCategoryChange}
+                                            handleCategoryChange2={handleCategoryChange}
+                                            handleCategoryChange3={handleCategoryChange}
+                                        />)}
                                 </Grid.Column>
                                 <Grid.Column computer={1} mobile={6} tablet={9}>
                                 </Grid.Column>
                                 <Grid.Column computer={8} mobile={6} tablet={9}>
                                     <div>
-                                        <h1>{name}</h1>
+                                        <h1>{name}</h1>{(size === 0 || category.title1 === '' ? null : <h4>stats: ({category.title1}, {category.title2}, {category.title3})</h4>)}
                                         {size > 8 ?
                                             <TeamOver8Input
                                                 size={size}
@@ -118,8 +130,10 @@ const UserInputForm = ({
                     </Form>
                 </div>
                 <Modal.Actions>
-                    <Button color='green' onClick={onSubmitBracket}>
-                        <Icon name='checkmark' /> Create</Button>
+                    {(size === 0 ? null :
+                        <Button color='green' onClick={onSubmitBracket}>
+                            <Icon name='checkmark' /> Create</Button>
+                    )}
                 </Modal.Actions>
             </Modal>
         </div>

@@ -16,6 +16,11 @@ class DashboardPage extends React.Component {
     formActivate: false,
     inputName: '',
     name: '',
+    category: {
+      title1: '',
+      title2: '',
+      title3: '',
+    },
     inputSize: 0,
     size: 0,
     bracketsCreated: 0,
@@ -25,81 +30,161 @@ class DashboardPage extends React.Component {
         row1: {
           a: {
             name: '',
-            seed: 1
+            seed: 1,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 16
+            seed: 16,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row2: {
           a: {
             name: '',
-            seed: 8
+            seed: 8,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 9
+            seed: 9,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row3: {
           a: {
             name: '',
-            seed: 4
+            seed: 4,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 13
+            seed: 13,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row4: {
           a: {
             name: '',
-            seed: 5
+            seed: 5,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 12
+            seed: 12,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row5: {
           a: {
             name: '',
-            seed: 2
+            seed: 2,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 15
+            seed: 15,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row6: {
           a: {
             name: '',
-            seed: 7
+            seed: 7,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 10
+            seed: 10,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row7: {
           a: {
             name: '',
-            seed: 3
+            seed: 3,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 14
+            seed: 14,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         },
         row8: {
           a: {
             name: '',
-            seed: 6
+            seed: 6,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           },
           b: {
             name: '',
-            seed: 11
+            seed: 11,
+            stats: {
+              one: '',
+              two: '',
+              three: ''
+            }
           }
         }
       }
@@ -362,6 +447,12 @@ class DashboardPage extends React.Component {
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
+  handleCategoryChange = (e, { title }) => {
+    const teams = this.state.category;
+    console.log(this.state.category)
+    teams[title] = e.target.value;
+    this.setState({ teams })
+  }
   handleChangeMatchup = (e, { value, rownum, letter, size, options }) => {
     let seedOption
     for (let i = 0; i < options.length; i++) {
@@ -463,7 +554,8 @@ class DashboardPage extends React.Component {
       size: size,
       date: Moment().format('M-D-YYYY').toString(),
       round: 0,
-      brackets: this.state.teams
+      brackets: this.state.teams,
+      category: this.state.category
     })
     window.location.href = '/dashboard'
   }
@@ -596,8 +688,14 @@ class DashboardPage extends React.Component {
     window.location.href = '/dashboard'
   }
   openModal = () => {
-
-    this.setState({ size: 0, name: '', inputSize: 0, inputName: '' })
+    this.setState({
+      size: 0, name: '', inputSize: 0, inputName: '',
+      category: {
+        title1: '',
+        title2: '',
+        title3: ''
+      }
+    })
   }
   getUserBrackets() {
     API.getPopulatedBracket()
@@ -650,7 +748,7 @@ class DashboardPage extends React.Component {
   }
 
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category } = this.state
 
     const bracketModal = this.getBracketNames().map((input, i) => {
       return (
@@ -712,12 +810,14 @@ class DashboardPage extends React.Component {
               handleTeamOver4={this.handleTeamOver4}
               handleTeamOver2={this.handleTeamOver2}
               handleTeamOver1={this.handleTeamOver1}
+              handleCategoryChange={this.handleCategoryChange}
               name={name}
               size={size}
               teams={teams}
               teams2={teams2}
               teams3={teams3}
               teams4={teams4}
+              category={category}
             />
           </Segment>
           {bracketModal}
