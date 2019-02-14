@@ -159,13 +159,6 @@ body {
   width: 145px;
   margin-right: 45px; 
 }
-.matchupA{
-  font-size: 16px
-}
 
 
-@media only screen and (max-width: 600px) { 
-  .matchupA{
-    font-size: 16px
-  }
-}
+

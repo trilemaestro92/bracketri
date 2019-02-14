@@ -52,7 +52,6 @@ class App extends Component {
     getUserInfo = () => {
         API.dashboard(Auth.getToken())
             .then(res => {
-                console.log(this.state.user)
                 this.setState({
                     user: res.data.user.name
                 })
