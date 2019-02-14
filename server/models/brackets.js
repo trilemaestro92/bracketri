@@ -28,6 +28,20 @@ const BracketSchema = new Schema({
         trim: true,
         required: true
     },
+    category: {
+        title1: {
+            type: String,
+            trim: true,
+        },
+        title2: {
+            type: String,
+            trim: true,
+        },
+        title3: {
+            type: String,
+            trim: true,
+        }
+    },
     brackets: {
         col1: {
             row1: {
@@ -39,6 +53,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -49,6 +77,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -61,6 +103,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -71,6 +127,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -83,6 +153,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -93,6 +177,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -105,6 +203,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -115,6 +227,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -127,6 +253,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -137,6 +277,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -149,6 +303,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -159,6 +327,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -171,6 +353,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -181,6 +377,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -193,6 +403,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -203,6 +427,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             }
@@ -217,6 +455,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -227,6 +479,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -239,6 +505,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -249,6 +529,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -261,6 +555,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -271,6 +579,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -283,6 +605,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -293,6 +629,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -305,6 +655,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -315,6 +679,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -327,6 +705,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -337,6 +729,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -349,6 +755,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -359,6 +779,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -371,6 +805,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -381,6 +829,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             }
@@ -395,6 +857,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -405,6 +881,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             },
@@ -417,6 +907,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -427,6 +931,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             }
@@ -441,6 +959,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 },
                 b: {
@@ -451,6 +983,20 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
                 }
             }
@@ -465,8 +1011,22 @@ const BracketSchema = new Schema({
                     seed: {
                         type: Number,
                         trim: true
+                    },
+                    stats: {
+                        one: {
+                            type: String,
+                            trim: true
+                        },
+                        two: {
+                            type: String,
+                            trim: true
+                        },
+                        three: {
+                            type: String,
+                            trim: true
+                        }
                     }
-                },
+                }
             }
         }
     }
