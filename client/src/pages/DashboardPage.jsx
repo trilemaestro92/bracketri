@@ -338,19 +338,19 @@ class DashboardPage extends React.Component {
   handleSizeChange = (e, { value }) => {
     this.setState({ inputSize: value });
   }
-  handleTeamOver8 = (e, { value, col, row, seed }) => {
+  handleTeamOver8 = (e, { value, col, row }) => {
     const field = e.target.name
     const teams = this.state.teams;
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
-  handleTeamOver4 = (e, { value, col, seed, row }) => {
+  handleTeamOver4 = (e, { value, col, row }) => {
     const field = e.target.name
     const teams = this.state.teams2;
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
-  handleTeamOver2 = (e, { value, col, seed, row }) => {
+  handleTeamOver2 = (e, { value, col, row }) => {
     const field = e.target.name
     const teams = this.state.teams3;
     teams[col][row][field]['name'] = e.target.value;
@@ -467,7 +467,7 @@ class DashboardPage extends React.Component {
     })
     window.location.href = '/dashboard'
   }
-  onSubmitChangeRound1 = (e, { teamsize, id }) => {
+  onSubmitChangeRound1 = (e, { teamsize }) => {
     const newChange = {
       round: 1
     }
@@ -483,37 +483,30 @@ class DashboardPage extends React.Component {
           userData: e.target.id,
           data: this.state.secondColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize <= 8 && teamsize >= 5) {
       API.editBracket(
         {
           userData: e.target.id,
           data: this.state.thirdColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize <= 4 && teamsize >= 3) {
       API.editBracket(
         {
           userData: e.target.id,
           data: this.state.fourthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize === 2) {
       API.editBracket(
         {
           userData: e.target.id,
           data: this.state.fifthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     }
+    this.getUserBrackets();
   }
   onSubmitChangeRound2 = (e, { teamsize }) => {
     const newChange = {
@@ -531,28 +524,23 @@ class DashboardPage extends React.Component {
           userData: e.target.id,
           data: this.state.thirdColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize <= 8 && teamsize >= 5) {
       API.editBracket2(
         {
           userData: e.target.id,
           data: this.state.fourthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize <= 4 && teamsize >= 3) {
       API.editBracket2(
         {
           userData: e.target.id,
           data: this.state.fifthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     }
+    this.getUserBrackets();
   }
   onSubmitChangeRound3 = (e, { teamsize }) => {
     const newChange = {
@@ -570,20 +558,16 @@ class DashboardPage extends React.Component {
           userData: e.target.id,
           data: this.state.fourthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     } else if (teamsize <= 8 && teamsize >= 5) {
       API.editBracket3(
         {
           userData: e.target.id,
           data: this.state.fifthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     }
-    // window.location.href = '/dashboard'
+    this.getUserBrackets();
   }
   onSubmitChangeRound4 = (e, { teamsize }) => {
     const newChange = {
@@ -601,10 +585,9 @@ class DashboardPage extends React.Component {
           userData: e.target.id,
           data: this.state.fifthColumn
         }
-      ).then((response)=>{
-        this.getUserBrackets()
-      }).catch(function (e) { console.log(e) })
+      ).catch(function (e) { console.log(e) })
     }
+    this.getUserBrackets();
   }
   handleDeleteBracket = (event) => {
     API.deleteBracket(
