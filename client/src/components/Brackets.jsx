@@ -1272,7 +1272,7 @@ const Brackets = ({
                                         onChange={handleChangeMatchup}
                                         options={(size >= 9 && size <= 10 ? options3({ brackets, rowNum: 'row7', rowNum2: 'row8' })
                                             : size >= 11 && size <= 13 ? options4({ brackets: brackets, brackets2: brackets2, rowNum: 'row7', rowNum2: 'row8' })
-                                                : size >= 14 && size <= 16 ? options3({ brackets: brackets, rowNum: 'row7', rowNum2: 'row8' })
+                                                : size >= 14 && size <= 16 ? options3({ brackets: brackets2, rowNum: 'row7', rowNum2: 'row8' })
                                                     : null)}
                                         placeholder='Select Winner'
                                         item
