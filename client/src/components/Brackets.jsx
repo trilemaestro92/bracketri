@@ -249,10 +249,10 @@ const Brackets = ({
                             onClick={onSubmitChangeMatchup}
                             bracket={'brackets.col2.row1.b'}
                         />
-                        : brackets2.row1.b.name)}
+                        : brackets.row1.b.name)}
                 seed2={(size === 8 ? brackets.row1.b.seed
                     : size >= 9 && round < 1 ? brackets.row2.a.seed + ' | ' + brackets.row2.b.seed
-                        : brackets2.row1.b.seed)}
+                        : brackets.row1.b.seed)}
             />
             <MatchUp
                 team={(size >= 5 && size <= 8 ? brackets.row2.a.name
