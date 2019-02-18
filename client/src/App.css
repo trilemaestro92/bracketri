@@ -122,10 +122,9 @@ body {
 }
 
 
-
-
-
-
+.user-outer-container{
+  display: flex;
+}
 
 .user-round-container{
   display: grid;
@@ -160,5 +159,19 @@ body {
   margin-right: 45px; 
 }
 
+.columnHeader{
+  display: none;
+}
+.ui.table:not(.unstackable) thead{
+  display: table-header-group;
+}
 
+@media only screen and (max-width: 690px) { 
+  .columnHeader{
+    display: inherit;
+  }
+  .ui.table:not(.unstackable) thead{
+    display: none;
+  }
+}
 

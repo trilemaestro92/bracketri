@@ -1,13 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom'
 import Moment from 'moment';
 import Auth from '../utils/Auth';
 import UserInputForm from '../components/UserInputForm'
 import BracketModal2 from '../components/BracketModal'
+import BracketList from '../components/BracketList'
+import Brackets from '../components/Brackets'
 import API from '../utils/API';
-import { Grid, Segment, Divider } from 'semantic-ui-react'
+import { Grid, Segment, Divider, Icon, Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
+const style = {
+  managerCard: {
+    display: 'flex',
+    fontWeight: '600',
+    justifyContent: 'left'
+  },
+  divManager: {
+    gridRow: '3'
+  },
+  strong: {
+    fontWeight: '400',
+    fontSize: '30px'
+  },
+  span: {
+    color: 'gray'
+  }
+}
 
 class DashboardPage extends React.Component {
   state = {
@@ -24,7 +44,9 @@ class DashboardPage extends React.Component {
     inputSize: 0,
     size: 0,
     bracketsCreated: 0,
-    submissionCompleted: false,
+    newTeams: {
+
+    },
     teams: {
       col1: {
         row1: {
@@ -415,6 +437,7 @@ class DashboardPage extends React.Component {
           user: res.data.user
         });
         this.getUserBrackets()
+        this.loadBracketInfo()
       })
   }
   handleNameChange = (e, { value }) => {
@@ -460,86 +483,10 @@ class DashboardPage extends React.Component {
         seedOption = options[i].seed
       }
     }
-    if (size >= 9) {
-      let team = Object.assign({}, this.state.secondColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-    if (size >= 5 && size <= 8) {
-      let team = Object.assign({}, this.state.thirdColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-    if (size >= 3 && size <= 4) {
-      let team = Object.assign({}, this.state.fourthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-      // if (this.state.fourthColumn.row1.b.name !== '' && this.state.fourthColumn.row1.a.name !== '') {
-      //   this.setState({ submissionCompleted: true })
-      // }
-    }
-    if (size === 2) {
-      let team = Object.assign({}, this.state.fifthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-  }
-  handleChangeMatchupRound2 = (e, { value, rownum, letter, size, options }) => {
-    let seedOption
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value === value) {
-        seedOption = options[i].seed
-      }
-    }
-    if (size >= 9) {
-      let team = Object.assign({}, this.state.thirdColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-    if (size >= 5 && size <= 8) {
-      let team = Object.assign({}, this.state.fourthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-    if (size >= 3 && size <= 4) {
-      let team = Object.assign({}, this.state.fifthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-      // if(this.state.fourthColumn.row1.b.name !== '' && this.state.fourthColumn.row1.a.name !== '' ){
-      //   this.setState({submissionCompleted: true})
-      // }
-    }
-  }
-  handleChangeMatchupRound3 = (e, { value, rownum, letter, size, options }) => {
-    let seedOption
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value === value) {
-        seedOption = options[i].seed
-      }
-    }
-    if (size >= 9) {
-      let team = Object.assign({}, this.state.fourthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-    if (size >= 5 && size <= 8) {
-      let team = Object.assign({}, this.state.fifthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
-  }
-  handleChangeMatchupRound4 = (e, { value, rownum, letter, size, options }) => {
-    let seedOption
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].value === value) {
-        seedOption = options[i].seed
-      }
-    }
-    if (size >= 9) {
-      let team = Object.assign({}, this.state.fifthColumn);
-      team[rownum][letter].name = value;
-      team[rownum][letter].seed = seedOption;
-    }
+    let team = {};
+    team['name'] = value
+    team['seed'] = seedOption
+    this.setState({ newTeams: team })
   }
   onGenerate = (event) => {
     event.preventDefault();
@@ -559,45 +506,61 @@ class DashboardPage extends React.Component {
     })
     window.location.href = '/dashboard'
   }
+  onSubmitChangeMatchup = (e, { teamsize, bracket }) => {
+    const newChange = {
+      column: this.state.newTeams,
+      bracket: bracket,
+    }
+    const queryURL = window.location.pathname
+    API.editBracket(
+      {
+        userData: e.target.id,
+        data: newChange
+      }
+    ).catch(function (e) { console.log(e) })
+
+    // if (teamsize >= 9) {
+    //   API.editBracket(
+    //     {
+    //       userData: e.target.id,
+    //       data: newChange
+    //     }
+    //   ).catch(function (e) { console.log(e) })
+    // } else if (teamsize <= 8 && teamsize >= 5) {
+    //   API.editBracket(
+    //     {
+    //       userData: e.target.id,
+    //       data: newChange,
+    //     }
+    //   ).catch(function (e) { console.log(e) })
+    // } else if (teamsize <= 4 && teamsize >= 3) {
+    //   API.editBracket(
+    //     {
+    //       userData: e.target.id,
+    //       data: newChange
+    //     }
+    //   ).catch(function (e) { console.log(e) })
+    // } else if (teamsize === 2) {
+    //   API.editBracket(
+    //     {
+    //       userData: e.target.id,
+    //       data: newChange
+    //     }
+    //   ).catch(function (e) { console.log(e) })
+    // }
+    this.getUserBrackets();
+    window.location.pathname = queryURL
+  }
   onSubmitChangeRound1 = (e, { teamsize }) => {
     const newChange = {
-      round: 1
+      round: 1,
     }
     API.editRound(
       {
         userData: e.target.id,
-        data: newChange
+        data: newChange,
       },
     ).catch(function (e) { console.log(e) })
-    if (teamsize >= 9) {
-      API.editBracket(
-        {
-          userData: e.target.id,
-          data: this.state.secondColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize <= 8 && teamsize >= 5) {
-      API.editBracket(
-        {
-          userData: e.target.id,
-          data: this.state.thirdColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize <= 4 && teamsize >= 3) {
-      API.editBracket(
-        {
-          userData: e.target.id,
-          data: this.state.fourthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize === 2) {
-      API.editBracket(
-        {
-          userData: e.target.id,
-          data: this.state.fifthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    }
     this.getUserBrackets();
   }
   onSubmitChangeRound2 = (e, { teamsize }) => {
@@ -610,28 +573,6 @@ class DashboardPage extends React.Component {
         data: newChange
       },
     ).catch(function (e) { console.log(e) })
-    if (teamsize >= 9) {
-      API.editBracket2(
-        {
-          userData: e.target.id,
-          data: this.state.thirdColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize <= 8 && teamsize >= 5) {
-      API.editBracket2(
-        {
-          userData: e.target.id,
-          data: this.state.fourthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize <= 4 && teamsize >= 3) {
-      API.editBracket2(
-        {
-          userData: e.target.id,
-          data: this.state.fifthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    }
     this.getUserBrackets();
   }
   onSubmitChangeRound3 = (e, { teamsize }) => {
@@ -644,21 +585,6 @@ class DashboardPage extends React.Component {
         data: newChange
       },
     ).catch(function (e) { console.log(e) })
-    if (teamsize >= 9) {
-      API.editBracket3(
-        {
-          userData: e.target.id,
-          data: this.state.fourthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    } else if (teamsize <= 8 && teamsize >= 5) {
-      API.editBracket3(
-        {
-          userData: e.target.id,
-          data: this.state.fifthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    }
     this.getUserBrackets();
   }
   onSubmitChangeRound4 = (e, { teamsize }) => {
@@ -671,14 +597,6 @@ class DashboardPage extends React.Component {
         data: newChange
       },
     ).catch(function (e) { console.log(e) })
-    if (teamsize >= 9) {
-      API.editBracket4(
-        {
-          userData: e.target.id,
-          data: this.state.fifthColumn
-        }
-      ).catch(function (e) { console.log(e) })
-    }
     this.getUserBrackets();
   }
   handleDeleteBracket = (event) => {
@@ -717,8 +635,17 @@ class DashboardPage extends React.Component {
     }
     return data
   }
-  loadBracketInfo = (e) => {
-    const eventType = e.target.id
+  getBracketID() {
+    const data = []
+    const queryURL = window.location.pathname.substring(11)
+    for (let i = 0; i < this.state.modals.length; i++) {
+      if (this.state.modals[i]._id === queryURL)
+        data.push(this.state.modals[i])
+    }
+    return data
+  }
+  loadBracketInfo = () => {
+    const queryURL = window.location.pathname.substring(11)
     API.getPopulatedBracket()
       .then(allData => {
         const data = allData.data
@@ -729,30 +656,36 @@ class DashboardPage extends React.Component {
           }
         }
         return dataList[0]
-      }).then(data => {
+      })
+      .then(data => {
+
         for (let i = 0; i < data.length; i++) {
           if
-            (data[i]._id === eventType && data[i].size <= 15 && data[i].size >= 9
+            (data[i]._id === queryURL && data[i].size <= 15 && data[i].size >= 9
           ) {
             this.setState({ secondColumn: data[i].brackets.col1 })
           }
-          if (data[i]._id === eventType && data[i].size <= 7 && data[i].size >= 5) {
+          if (data[i]._id === queryURL && data[i].size <= 7 && data[i].size >= 5) {
             this.setState({ thirdColumn: data[i].brackets.col1 })
           }
-          if (data[i]._id === eventType && data[i].size === 3 && data[i].round === 0) {
+          if (data[i]._id === queryURL && data[i].size === 3 && data[i].round === 0) {
             this.setState({ fourthColumn: data[i].brackets.col1 })
           }
         }
+
       })
 
   }
-
+  onClickBracket = (e) => {
+    const eventType = e.target.id
+    window.location.pathname = `dashboard/${eventType}`
+  }
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, thirdColumn } = this.state
 
     const bracketModal = this.getBracketNames().map((input, i) => {
       return (
-        <BracketModal2
+        <BracketList
           key={i}
           format={format}
           round={input.round}
@@ -771,6 +704,32 @@ class DashboardPage extends React.Component {
           handleChangeMatchupRound2={this.handleChangeMatchupRound2}
           handleChangeMatchupRound3={this.handleChangeMatchupRound3}
           handleChangeMatchupRound4={this.handleChangeMatchupRound4}
+          onClickBracket={this.onClickBracket}
+          onSubmitChangeRound1={this.onSubmitChangeRound1}
+          onSubmitChangeRound2={this.onSubmitChangeRound2}
+          onSubmitChangeRound3={this.onSubmitChangeRound3}
+          onSubmitChangeRound4={this.onSubmitChangeRound4}
+        />)
+    })
+    const brackets = this.getBracketID().map((input, i) => {
+      return (
+        <Brackets
+          key={i}
+          format={format}
+          round={input.round}
+          title={input.name}
+          size={input.size}
+          date={input.date}
+          brackets={input.brackets.col1}
+          brackets2={input.brackets.col2}
+          brackets3={input.brackets.col3}
+          brackets4={input.brackets.col4}
+          brackets5={input.brackets.col5}
+          bracketID={input._id}
+          submissionCompleted={submissionCompleted}
+          handleDeleteBracket={this.handleDeleteBracket}
+          onSubmitChangeMatchup={this.onSubmitChangeMatchup}
+          handleChangeMatchup={this.handleChangeMatchup}
           loadBracketInfo={this.loadBracketInfo}
           onSubmitChangeRound1={this.onSubmitChangeRound1}
           onSubmitChangeRound2={this.onSubmitChangeRound2}
@@ -787,41 +746,58 @@ class DashboardPage extends React.Component {
       }
     `}</style>
         <Grid.Column computer={4} mobile={6} tablet={6}>
-          <Segment className='manager-card'>
-            <p style={{ display: 'flex', fontWeight: '600', justifyContent: 'left' }}>League Manager</p>
-            <Divider />
-            <div style={{ gridRow: '3' }}>
-              <strong style={{ fontWeight: '400', fontSize: '30px' }}>{user.name}</strong>
-              <p style={{ color: 'lightslategray' }}>Brackets created ({bracketsCreated})</p>
-            </div>
-          </Segment>
+          {(window.location.pathname === '/dashboard' ?
+            <Segment className='manager-card'>
+              <p style={style.managerCard}>League Manager</p>
+              <Divider />
+              <div style={style.divManager}>
+                <strong style={style.strong}>{user.name}</strong>
+                <p style={style.span}>Brackets created ({bracketsCreated})</p>
+              </div>
+            </Segment>
+            :
+            <Container textAlign='left'>
+              <a href='/dashboard'>
+                <Icon size='large' color='grey' name='arrow alternate circle left'></Icon>
+                <span style={style.span}>Back to Dashboard</span>
+              </a>
+            </Container>
+          )}
         </Grid.Column>
-        <Grid.Column computer={8} mobile={8} tablet={9}>
-          <Segment>
-            <UserInputForm
-              onGenerate={this.onGenerate}
-              onSubmitBracket={this.onSubmitBracket}
-              openModal={this.openModal}
-              handleNameChange={this.handleNameChange}
-              handleSizeChange={this.handleSizeChange}
-              inputName={inputName}
-              inputSize={inputSize}
-              handleTeamOver8={this.handleTeamOver8}
-              handleTeamOver4={this.handleTeamOver4}
-              handleTeamOver2={this.handleTeamOver2}
-              handleTeamOver1={this.handleTeamOver1}
-              handleCategoryChange={this.handleCategoryChange}
-              name={name}
-              size={size}
-              teams={teams}
-              teams2={teams2}
-              teams3={teams3}
-              teams4={teams4}
-              category={category}
-            />
-          </Segment>
-          {bracketModal}
-        </Grid.Column>
+        {(window.location.pathname === '/dashboard' ?
+          <Grid.Column computer={8} mobile={8} tablet={9}>
+            <Segment>
+              <UserInputForm
+                onGenerate={this.onGenerate}
+                onSubmitBracket={this.onSubmitBracket}
+                openModal={this.openModal}
+                handleNameChange={this.handleNameChange}
+                handleSizeChange={this.handleSizeChange}
+                inputName={inputName}
+                inputSize={inputSize}
+                handleTeamOver8={this.handleTeamOver8}
+                handleTeamOver4={this.handleTeamOver4}
+                handleTeamOver2={this.handleTeamOver2}
+                handleTeamOver1={this.handleTeamOver1}
+                handleCategoryChange={this.handleCategoryChange}
+                name={name}
+                size={size}
+                teams={teams}
+                teams2={teams2}
+                teams3={teams3}
+                teams4={teams4}
+                category={category}
+              />
+            </Segment>
+            {bracketModal}
+          </Grid.Column>
+          :
+          <Grid.Row >
+            <Grid.Column>
+              {brackets}
+            </Grid.Column>
+          </Grid.Row>
+        )}
       </Grid>
     );
   }
