@@ -228,8 +228,8 @@ const Brackets = ({
                 style={(size <= 7 && size >= 5 ? { display: 'none' } : null)}
                 team={(size < 16 ? brackets.row1.a.name : 'TBD')}
                 seed={(size < 16 ? brackets.row1.a.seed : null)}
-                team2={(size === 8 ? brackets.row1.b.name :
-                    size >= 9 && round < 1 ?
+                team2={(size <= 8 ? brackets.row1.b.name
+                    : size >= 9 && round < 1 ?
                         <ModalModalExample
                             winner={(brackets2 === undefined || brackets2.row1 === undefined || brackets2.row1.b === undefined ? 'activate' : brackets2.row1.b.name)}
                             pickTeam={
@@ -249,10 +249,10 @@ const Brackets = ({
                             onClick={onSubmitChangeMatchup}
                             bracket={'brackets.col2.row1.b'}
                         />
-                        : brackets.row1.b.name)}
-                seed2={(size === 8 ? brackets.row1.b.seed
+                        : brackets2.row1.b.name)}
+                seed2={(size <= 8 ? brackets.row1.b.seed
                     : size >= 9 && round < 1 ? brackets.row2.a.seed + ' | ' + brackets.row2.b.seed
-                        : brackets.row1.b.seed)}
+                        : brackets2.row1.b.seed)}
             />
             <MatchUp
                 team={(size >= 5 && size <= 8 ? brackets.row2.a.name
