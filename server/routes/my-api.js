@@ -52,9 +52,11 @@ module.exports = function (app) {
 
   app.put('/my-api/edit-brackets/:index', function (req, res) {
     console.log("The userId is: " + req.params.index)
+    console.log(req.body.column)
+    console.log(req.body.bracket)
     db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
       $set: {
-        "brackets.col2": req.body
+        [req.body.bracket]: req.body.column
       }
     }).then(function (newBracket) {
       console.log(newBracket)
@@ -102,5 +104,6 @@ module.exports = function (app) {
       res.json(err);
     });
   });
+
 
 }

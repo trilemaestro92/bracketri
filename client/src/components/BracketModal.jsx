@@ -1,8 +1,9 @@
 import React from 'react';
-import { Modal, Menu, Dropdown, Segment, Header, Button, Icon, Container, Grid } from 'semantic-ui-react';
+import { Modal, Menu, Dropdown, Segment, Header, Button, Icon, Container, Grid, Popup } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../App.css'
 import { options, options2, options3 } from './Options'
+import BoxScores from './BoxScores'
 
 const style = {
     roundHeader: {
@@ -10,19 +11,19 @@ const style = {
         textTransform: 'capitalize'
     },
     divContainer: {
-        marginBottom: '10px' 
+        marginBottom: '10px'
     },
     triggerButton: {
-        boxShadow: 'none', 
-        fontSize: '12px', 
-        fontWeight: 'bold' 
+        boxShadow: 'none',
+        fontSize: '12px',
+        fontWeight: 'bold'
     },
     marinBottom: {
         marginBottom: '20px'
     },
-    span:{
-        fontSize: '26px', 
-        fontWeight: 'bolder' 
+    span: {
+        fontSize: '26px',
+        fontWeight: 'bolder'
     }
 }
 
@@ -60,6 +61,7 @@ const MatchUp = (props) => (
                 </Button>
             </span>
         </div>
+        <a>box score</a>
     </div>
 )
 
@@ -1014,7 +1016,7 @@ const BraketModal = ({
                                     {(size > 1 && size <= 2 ? round2 : null)}
                                 </Grid.Row>
                                 <Grid.Row stretched >
-                                    <Grid.Column  verticalAlign='middle' textAlign='center'>
+                                    <Grid.Column verticalAlign='middle' textAlign='center'>
                                         {(size > 8 ? overEight() : null)}
                                         {(size >= 5 && size <= 8 ? overFour() : null)}
                                         {(size > 2 && size <= 4 ? overTwo() : null)}
@@ -1056,6 +1058,7 @@ const BraketModal = ({
                             onClick={handleDeleteBracket}>
                             Delete Bracket
                             </Button>
+                            <BoxScores/>
                         {round === 0 ?
                             <Button
                                 // disabled={(submissionCompleted === false? true: false)}
