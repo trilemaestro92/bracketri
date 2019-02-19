@@ -28,6 +28,10 @@ const BracketSchema = new Schema({
         trim: true,
         required: true
     },
+    scoreboard:{
+        type:Boolean,
+        required: true
+    },
     category: {
         title1: {
             type: String,
@@ -56,15 +60,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -80,15 +84,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -106,15 +110,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -130,15 +134,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -156,15 +160,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -180,15 +184,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -206,15 +210,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -230,15 +234,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -256,15 +260,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -280,15 +284,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -306,15 +310,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -330,15 +334,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -356,15 +360,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -380,15 +384,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -406,15 +410,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -430,15 +434,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -458,15 +462,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -482,15 +486,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -508,15 +512,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -532,15 +536,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -558,15 +562,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -582,15 +586,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -608,15 +612,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -632,15 +636,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -658,15 +662,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -682,15 +686,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -708,15 +712,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -732,15 +736,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -758,15 +762,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -782,15 +786,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -808,15 +812,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -832,15 +836,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -860,15 +864,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -884,15 +888,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -910,15 +914,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -934,15 +938,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -962,15 +966,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -986,15 +990,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }
@@ -1014,15 +1018,15 @@ const BracketSchema = new Schema({
                     },
                     stats: {
                         one: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         two: {
-                            type: String,
+                            type: Number,
                             trim: true
                         },
                         three: {
-                            type: String,
+                            type: Number,
                             trim: true
                         }
                     }

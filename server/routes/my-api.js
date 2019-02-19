@@ -22,7 +22,7 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-  ``
+
   app.delete('/my-api/delete/:itemID', function (req, res) {
     // console.log("The userId is: " + req.params.itemID)
     db.Bracket.deleteOne({ _id: req.params.itemID })
@@ -51,12 +51,12 @@ module.exports = function (app) {
   });
 
   app.put('/my-api/edit-brackets/:index', function (req, res) {
-    console.log("The userId is: " + req.params.index)
-    console.log(req.body.column)
-    console.log(req.body.bracket)
+    // console.log("The userId is: " + req.params.index)
     db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
       $set: {
-        [req.body.bracket]: req.body.column
+        [req.body.bracket]: req.body.column,
+        [req.body.team1category]: req.body.team1stats,
+        [req.body.team2category]: req.body.team2stats
       }
     }).then(function (newBracket) {
       console.log(newBracket)
@@ -65,45 +65,5 @@ module.exports = function (app) {
       res.json(err);
     });
   });
-  app.put('/my-api/edit-brackets-round2/:index', function (req, res) {
-    console.log("The userId is: " + req.params.index)
-    db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
-      $set: {
-        "brackets.col3": req.body
-      }
-    }).then(function (newBracket) {
-      console.log(newBracket)
-      res.json(newBracket)
-    }).catch(function (err) {
-      res.json(err);
-    });
-  });
-  app.put('/my-api/edit-brackets-round3/:index', function (req, res) {
-    console.log("The userId is: " + req.params.index)
-    db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
-      $set: {
-        "brackets.col4": req.body
-      }
-    }).then(function (newBracket) {
-      console.log(newBracket)
-      res.json(newBracket)
-    }).catch(function (err) {
-      res.json(err);
-    });
-  });
-  app.put('/my-api/edit-brackets-round4/:index', function (req, res) {
-    console.log("The userId is: " + req.params.index)
-    db.Bracket.findOneAndUpdate({ _id: req.params.index }, {
-      $set: {
-        "brackets.col5": req.body
-      }
-    }).then(function (newBracket) {
-      console.log(newBracket)
-      res.json(newBracket)
-    }).catch(function (err) {
-      res.json(err);
-    });
-  });
-
-
 }
+
