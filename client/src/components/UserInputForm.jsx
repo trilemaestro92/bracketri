@@ -56,7 +56,11 @@ const UserInputForm = ({
 
     return (
         <div>
-            <Modal closeOnDimmerClick={false} trigger={<Button onClick={openModal} basic icon circular ><Icon color='pink' name='plus' ></Icon></Button>} closeIcon>
+            <Modal closeOnDimmerClick={false} trigger={
+                <Button onClick={openModal} basic icon circular >
+                    <Icon color='pink' name='plus' ></Icon>
+                </Button>
+            } closeIcon>
                 <Header icon='setting' content='New Tournament Settings' />
                 <div style={{ margin: '50px', overflow: '-webkit-paged-y' }}>
                     <Form onSubmit={onGenerate} size='small'>
@@ -92,7 +96,7 @@ const UserInputForm = ({
                                             handleCategoryChange2={handleCategoryChange}
                                             handleCategoryChange3={handleCategoryChange}
                                         />)}
-                                    
+
                                     {(inputName === '' || inputSize === 0 ?
                                         <Form.Button color='red' content='Please fill out' disabled /> :
                                         <Form.Button color='teal' content='Generate' />

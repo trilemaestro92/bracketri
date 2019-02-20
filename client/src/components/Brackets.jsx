@@ -1,10 +1,8 @@
 import React from 'react';
-import { Modal, Menu, Dropdown, Segment, Header, Button, Input, Container, Grid, Table, Popup } from 'semantic-ui-react';
+import { Modal, Menu, Dropdown, Segment, Header, Button, Input, Grid, Table, Popup } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../App.css'
 import { options, options2, options3, options4 } from './Options'
-import BoxScores from './BoxScores'
-import { PromiseProvider } from 'mongoose';
 
 const style = {
     roundHeader: {
@@ -215,7 +213,6 @@ const Brackets = ({
     brackets5,
     bracketID,
     round,
-    scoreboard,
     category,
     openActivateModal
 
