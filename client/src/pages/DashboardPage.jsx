@@ -426,6 +426,7 @@ class DashboardPage extends React.Component {
         }
       }
     },
+    initialBrackets: [],
     modals: [],
     bracketInfo: {},
     searchInput: '',
@@ -439,6 +440,7 @@ class DashboardPage extends React.Component {
   /**
    * This method will be executed after initial rendering.
    */
+
   componentDidMount() {
     API.dashboard(Auth.getToken())
       .then(res => {
@@ -449,17 +451,18 @@ class DashboardPage extends React.Component {
         this.getUserBrackets()
         this.loadBracketInfo()
       })
+
   }
   handleInputChange = (event) => {
-    this.setState({ searchInput: event.target.value });
-  }
-  inputSearch = (event) => {
-    event.preventDefault();
-    const newArray = this.state.modals.filter(brackets => brackets.name.toLowerCase().indexOf(this.state.searchInput.toLowerCase()) > -1);
-    this.setState({ modals: newArray })
-  }
-  searchReset = () => {
-    this.getUserBrackets()
+    var searchQuery = event.target.value.toLowerCase();
+    var modals = this.state.initialBrackets.filter(function (el) {
+      var searchValue = el.name.toLowerCase();
+
+      return searchValue.indexOf(searchQuery) !== -1;
+    });
+    this.setState({
+      modals: modals
+    });
   }
   handleNameChange = (e, { value }) => {
     this.setState({ inputName: value });
@@ -641,7 +644,11 @@ class DashboardPage extends React.Component {
             dataList.push(data[i].tournaments)
           }
         }
-        this.setState({ modals: dataList[0], bracketsCreated: dataList[0].length })
+        this.setState({
+          initialBrackets: dataList[0],
+          bracketsCreated: dataList[0].length
+        })
+        this.setState({ modals: this.state.initialBrackets })
       }).catch(err => console.log(err))
   }
   getBracketID() {
@@ -690,7 +697,7 @@ class DashboardPage extends React.Component {
     window.location.pathname = `dashboard/${eventType}`
   }
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals, initialBrackets } = this.state
 
     const bracketModal = modals.map((input, i) => {
       return (
@@ -764,11 +771,7 @@ class DashboardPage extends React.Component {
         {(window.location.pathname === '/dashboard' ?
           <Grid.Column computer={8} mobile={8} tablet={9}>
             <Segment style={style.modal}>
-              <Input type='text' placeholder='Search...' action onChange={this.handleInputChange}>
-                <input />
-                <Button basic icon='search' onClick={this.inputSearch} />
-                <Button basic icon='repeat' onClick={this.searchReset}></Button>
-              </Input>
+              <Input onChange={this.handleInputChange} icon={<Icon color='pink' name='search' circular link />} placeholder='Search...' />
               <UserInputForm
                 onGenerate={this.onGenerate}
                 onSubmitBracket={this.onSubmitBracket}
