@@ -5,18 +5,18 @@ import '../App.css'
 import bracket from '../assets/Bracketri.JPG'
 
 const style = {
-    container1:{
-        margin:'100px 0px 30px 0px'
+    container1: {
+        margin: '100px 0px 30px 0px'
     },
     h1: {
-        fontSize: '30px',
+        fontSize: '40px',
         marginTop: '50px'
     },
-    h3:{
-        fontSize:'1.5em'
+    h3: {
+        fontSize: '1.5em'
     },
-    p:{
-        fontSize:'1.2em'
+    p: {
+        fontSize: '1.2em'
     }
 }
 
@@ -48,12 +48,12 @@ class HomePage extends Component {
                 </div>
 
                 <div className='content-container'>
-                    <Segment  vertical>
+                    <Segment vertical>
                         <Grid container stackable verticalAlign='middle'>
                             <Grid.Row stretched>
                                 <Grid.Column width={8}>
                                     <Header as='h3' style={style.h3}>
-                                        Pit Teams Against One Another 
+                                        Pit Teams Against One Another
                                 </Header>
                                     <p style={style.p}>
                                         A fast &#38; simple way to create and manage your brackets.
@@ -67,7 +67,7 @@ class HomePage extends Component {
                                  </p>
                                 </Grid.Column>
                                 <Grid.Column floated='right' width={6}>
-                                    <Image bordered rounded size='large' src={bracket}  />
+                                    <Image bordered rounded size='large' src={bracket} />
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
