@@ -1,13 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom'
 import Moment from 'moment';
 import Auth from '../utils/Auth';
 import UserInputForm from '../components/UserInputForm'
-import BracketModal2 from '../components/BracketModal'
 import BracketList from '../components/BracketList'
 import Brackets from '../components/Brackets'
 import API from '../utils/API';
-import { Grid, Segment, Divider, Icon, Container } from 'semantic-ui-react'
+import { Grid, Segment, Divider, Icon, Container, Input, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
@@ -26,6 +24,13 @@ const style = {
   },
   span: {
     color: 'gray'
+  },
+  modal: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  input: {
+    width: '250px'
   }
 }
 
@@ -421,8 +426,9 @@ class DashboardPage extends React.Component {
         }
       }
     },
-    modals: {},
+    modals: [],
     bracketInfo: {},
+    searchInput: '',
     format: {
       one: ['Championship', 'Winner'],
       two: ['Semis', 'Championship', 'Winner'],
@@ -444,32 +450,42 @@ class DashboardPage extends React.Component {
         this.loadBracketInfo()
       })
   }
+  handleInputChange = (event) => {
+    this.setState({ searchInput: event.target.value });
+  }
+  inputSearch = (event) => {
+    event.preventDefault();
+    const newArray = this.state.modals.filter(brackets => brackets.name.toLowerCase().indexOf(this.state.searchInput.toLowerCase()) > -1);
+    this.setState({ modals: newArray })
+  }
+  searchReset = () => {
+    this.getUserBrackets()
+  }
   handleNameChange = (e, { value }) => {
     this.setState({ inputName: value });
   }
   handleSizeChange = (e, { value }) => {
     this.setState({ inputSize: value });
   }
-  handleTeamOver8 = (e, { value, col, row }) => {
+  handleTeamOver8 = (e, { col, row }) => {
     const field = e.target.name
     const teams = this.state.teams;
     teams[col][row][field]['name'] = e.target.value;
-    console.log(this.state.size, this.state.inputSize)
     this.setState({ teams })
   }
-  handleTeamOver4 = (e, { value, col, row }) => {
+  handleTeamOver4 = (e, { col, row }) => {
     const field = e.target.name
     const teams = this.state.teams2;
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
-  handleTeamOver2 = (e, { value, col, row }) => {
+  handleTeamOver2 = (e, { col, row }) => {
     const field = e.target.name
     const teams = this.state.teams3;
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
-  handleTeamOver1 = (e, { value, col, row }) => {
+  handleTeamOver1 = (e, { col, row }) => {
     const field = e.target.name
     const teams = this.state.teams4;
     teams[col][row][field]['name'] = e.target.value;
@@ -480,7 +496,7 @@ class DashboardPage extends React.Component {
     category[title] = e.target.value;
     this.setState({ category })
   }
-  handleChangeMatchup = (e, { value, rownum, letter, size, options }) => {
+  handleChangeMatchup = (e, { value, options }) => {
     let seedOption
     for (let i = 0; i < options.length; i++) {
       if (options[i].value === value) {
@@ -491,25 +507,20 @@ class DashboardPage extends React.Component {
     team['name'] = value
     team['seed'] = seedOption
     this.setState({ newTeams: team })
-    console.log(team)
   }
   handleInputChange1 = (e, { num }) => {
     let team1Stats = this.state.team1Stats;
     const field = e.target.value
     team1Stats[num] = field
-    console.log(team1Stats)
     this.setState({ team1Stats })
   }
   handleInputChange2 = (e, { num }) => {
     let team2Stats = this.state.team2Stats;
     const field = e.target.value
     team2Stats[num] = field
-    console.log(this.state.team2Stats)
     this.setState({ team2Stats })
   }
-  handleCheckboxToggle = (e, { value, rownum, letter, size, options }) => {
-    console.log(this.state.scoreboard)
-    console.log(this.state.size, this.state.inputSize)
+  handleCheckboxToggle = (e) => {
     this.setState({ scoreboard: !this.state.scoreboard })
   }
   onGenerate = (event) => {
@@ -550,7 +561,7 @@ class DashboardPage extends React.Component {
     this.getUserBrackets();
     window.location.pathname = queryURL
   }
-  onSubmitChangeRound1 = (e, { teamsize }) => {
+  onSubmitChangeRound1 = (e) => {
     const newChange = {
       round: 1,
     }
@@ -562,7 +573,7 @@ class DashboardPage extends React.Component {
     ).catch(function (e) { console.log(e) })
     this.getUserBrackets();
   }
-  onSubmitChangeRound2 = (e, { teamsize }) => {
+  onSubmitChangeRound2 = (e) => {
     const newChange = {
       round: 2,
     }
@@ -574,7 +585,7 @@ class DashboardPage extends React.Component {
     ).catch(function (e) { console.log(e) })
     this.getUserBrackets();
   }
-  onSubmitChangeRound3 = (e, { teamsize }) => {
+  onSubmitChangeRound3 = (e) => {
     const newChange = {
       round: 3,
     }
@@ -586,7 +597,7 @@ class DashboardPage extends React.Component {
     ).catch(function (e) { console.log(e) })
     this.getUserBrackets();
   }
-  onSubmitChangeRound4 = (e, { teamsize }) => {
+  onSubmitChangeRound4 = (e) => {
     const newChange = {
       round: 4,
     }
@@ -632,13 +643,6 @@ class DashboardPage extends React.Component {
         }
         this.setState({ modals: dataList[0], bracketsCreated: dataList[0].length })
       }).catch(err => console.log(err))
-  }
-  getBracketNames() {
-    const data = []
-    for (let i = 0; i < this.state.modals.length; i++) {
-      data.push(this.state.modals[i])
-    }
-    return data
   }
   getBracketID() {
     const data = []
@@ -686,34 +690,17 @@ class DashboardPage extends React.Component {
     window.location.pathname = `dashboard/${eventType}`
   }
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals } = this.state
 
-    const bracketModal = this.getBracketNames().map((input, i) => {
+    const bracketModal = modals.map((input, i) => {
       return (
         <BracketList
           key={i}
-          format={format}
-          round={input.round}
           title={input.name}
           size={input.size}
           date={input.date}
-          brackets={input.brackets.col1}
-          brackets2={input.brackets.col2}
-          brackets3={input.brackets.col3}
-          brackets4={input.brackets.col4}
-          brackets5={input.brackets.col5}
           bracketID={input._id}
-          submissionCompleted={submissionCompleted}
-          handleDeleteBracket={this.handleDeleteBracket}
-          handleChangeMatchup={this.handleChangeMatchup}
-          handleChangeMatchupRound2={this.handleChangeMatchupRound2}
-          handleChangeMatchupRound3={this.handleChangeMatchupRound3}
-          handleChangeMatchupRound4={this.handleChangeMatchupRound4}
           onClickBracket={this.onClickBracket}
-          onSubmitChangeRound1={this.onSubmitChangeRound1}
-          onSubmitChangeRound2={this.onSubmitChangeRound2}
-          onSubmitChangeRound3={this.onSubmitChangeRound3}
-          onSubmitChangeRound4={this.onSubmitChangeRound4}
         />)
     })
     const brackets = this.getBracketID().map((input, i) => {
@@ -776,7 +763,12 @@ class DashboardPage extends React.Component {
         </Grid.Column>
         {(window.location.pathname === '/dashboard' ?
           <Grid.Column computer={8} mobile={8} tablet={9}>
-            <Segment>
+            <Segment style={style.modal}>
+              <Input type='text' placeholder='Search...' action onChange={this.handleInputChange}>
+                <input />
+                <Button basic icon='search' onClick={this.inputSearch} />
+                <Button basic icon='repeat' onClick={this.searchReset}></Button>
+              </Input>
               <UserInputForm
                 onGenerate={this.onGenerate}
                 onSubmitBracket={this.onSubmitBracket}
