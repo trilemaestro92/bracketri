@@ -5,7 +5,7 @@ import UserInputForm from '../components/UserInputForm'
 import BracketList from '../components/BracketList'
 import Brackets from '../components/Brackets'
 import API from '../utils/API';
-import { Grid, Segment, Divider, Icon, Container, Input, Button } from 'semantic-ui-react'
+import { Grid, Segment, Divider, Icon, Container, Input } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 
@@ -697,7 +697,7 @@ class DashboardPage extends React.Component {
     window.location.pathname = `dashboard/${eventType}`
   }
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals, initialBrackets } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals } = this.state
 
     const bracketModal = modals.map((input, i) => {
       return (
