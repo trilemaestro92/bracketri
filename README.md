@@ -4,15 +4,17 @@ Heroku Link: https://project-bracketri.herokuapp.com/
 ![](client/public/assets/Bracketri.JPG)
 
 
-The front-end uses React, React Semantic.
-The back-end uses Node.JS, MongoDB, Express, and React Passort. 
-* React Passport packages: axios, bcryptjs, jsonwebtoken, mongoose, passport, react-router-dom, validator  
-
 # Build a Bracket
 * This application allow users to create/edit/delete tournaments.(Up to 16)
 * Users can create a profile with user authenication. *Please don't use your actual password*
 * Users can advance round by round picking the team to advance.
+* Includes a stat tracking feature, where user can input 3 statistical category for every matchup
 * Users can delete a tournament.
+
+The front-end uses React, React Semantic.
+The back-end uses Node.JS, MongoDB, Express, and React Passort. 
+* React Passport packages: axios, bcryptjs, jsonwebtoken, mongoose, passport, react-router-dom, validator  
+
 
 # How to run the app
 
