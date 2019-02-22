@@ -4,6 +4,7 @@ import Auth from '../utils/Auth';
 import UserInputForm from '../components/UserInputForm'
 import BracketList from '../components/BracketList'
 import Brackets from '../components/Brackets'
+import Instruction from '../components/Instruction'
 import API from '../utils/API';
 import { Grid, Segment, Divider, Icon, Container, Input } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
@@ -49,6 +50,7 @@ class DashboardPage extends React.Component {
     inputSize: 0,
     size: 0,
     bracketsCreated: 0,
+    activeIndex: 0,
     newTeams: {
 
     },
@@ -453,6 +455,12 @@ class DashboardPage extends React.Component {
       })
 
   }
+  handleInstruction = (e, titleProps) => {
+    const { index } = titleProps
+    const { activeIndex } = this.state
+    const newIndex = activeIndex === index ? -1 : index
+    this.setState({ activeIndex: newIndex })
+  }
   handleInputChange = (event) => {
     var searchQuery = event.target.value.toLowerCase();
     var modals = this.state.initialBrackets.filter(function (el) {
@@ -697,7 +705,7 @@ class DashboardPage extends React.Component {
     window.location.pathname = `dashboard/${eventType}`
   }
   render() {
-    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals } = this.state
+    const { submissionCompleted, bracketsCreated, user, inputName, inputSize, size, name, teams, teams2, teams3, teams4, format, category, scoreboard, modals, activeIndex } = this.state
 
     const bracketModal = modals.map((input, i) => {
       return (
@@ -742,7 +750,7 @@ class DashboardPage extends React.Component {
         />)
     })
     return (
-      <Grid stackable>
+      <Grid relaxed stackable>
         <style>{`
       body > div,
       body > div  {
@@ -805,10 +813,20 @@ class DashboardPage extends React.Component {
             </Grid.Column>
           </Grid.Row>
         )}
+        {(window.location.pathname === '/dashboard' ?
+          <Grid.Column computer={4} mobile={3} tablet={9}>
+            <Segment style={style.modal}>
+              <Instruction
+                handleInstruction={this.handleInstruction}
+                activeIndex={activeIndex}
+              />
+            </Segment>
+          </Grid.Column>
+          : null
+        )}
       </Grid>
     );
   }
-
 }
 
 export default DashboardPage;
