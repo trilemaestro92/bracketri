@@ -160,18 +160,30 @@ body {
 }
 
 .columnHeader{
-  display: none;
+  display: inherit;
 }
 .ui.table:not(.unstackable) thead{
-  display: table-header-group;
+  display: none;
 }
-
-@media only screen and (max-width: 690px) { 
+.ui.stackable.grid{
+  min-width: 320px;
+  margin-top: 85px;
+}
+.four.wide.computer.six.wide.mobile.six.wide.tablet.column{
+  display: none;
+}
+@media only screen and (min-width: 690px) { 
   .columnHeader{
-    display: inherit;
+    display: none;
   }
   .ui.table:not(.unstackable) thead{
-    display: none;
+    display: table-header-group;
+  }
+  .ui.stackable.grid{
+    margin-top: 0px;
+  }
+  .four.wide.computer.six.wide.mobile.six.wide.tablet.column{
+    display: inline-block;
   }
 }
 

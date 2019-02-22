@@ -98,9 +98,8 @@ class App extends Component {
                             {this.state.authenticated ? (
                                 <Menu.Menu position='right'>
                                     <Menu.Item name='dashboard' >
-                                        <Button onClick={this.handleClickMyBracket} color='teal'> My Bracketri</Button>
+                                        <Button fluid onClick={this.handleClickMyBracket} color='teal'> My Bracketri</Button>
                                     </Menu.Item>
-
                                     <Menu.Item position='right' style={{ marginRight: '2.5em' }}>
                                         <Dropdown
                                             item
