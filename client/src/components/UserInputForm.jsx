@@ -11,7 +11,8 @@ import '../App.css'
 const style = {
     checkbox: {
         fontSize: '12px',
-        marginBottom: '8px'
+        marginBottom: '8px',
+        marginTop:'10px'
     }
 }
 const sizeOptions = [
@@ -62,11 +63,11 @@ const UserInputForm = ({
                 </Button>
             } closeIcon>
                 <Header icon='setting' content='New Tournament Settings' />
-                <div style={{ margin: '50px', overflow: '-webkit-paged-y' }}>
+                <div className='user-input'>
                     <Form onSubmit={onGenerate} size='small'>
-                        <Grid>
+                        <Grid stackable>
                             <Grid.Row>
-                                <Grid.Column computer={4} mobile={6} tablet={9}>
+                                <Grid.Column computer={4} mobile={4} tablet={4}>
                                     <Form.Group>
                                         <Form.Field
                                             control={Input}
