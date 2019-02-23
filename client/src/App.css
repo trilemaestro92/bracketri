@@ -172,6 +172,12 @@ body {
 .four.wide.computer.six.wide.mobile.six.wide.tablet.column{
   display: none;
 }
+.user-input{
+  margin: 0px;
+  overflow: -webkit-paged-y
+}
+
+
 @media only screen and (min-width: 690px) { 
   .columnHeader{
     display: none;
@@ -184,6 +190,10 @@ body {
   }
   .four.wide.computer.six.wide.mobile.six.wide.tablet.column{
     display: inline-block;
+  }
+
+  .user-input{
+    margin: 50px;
   }
 }
 

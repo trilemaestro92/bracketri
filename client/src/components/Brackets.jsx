@@ -3478,7 +3478,7 @@ const Brackets = ({
                             // disabled={(submissionCompleted === false? true: false)}
                             id={bracketID}
                             teamsize={size}
-                            size='small'
+                            size='tiny'
                             color='green'
                             floated='right'
                             onClick={onSubmitChangeRound1}>
@@ -3489,7 +3489,7 @@ const Brackets = ({
                         <Button
                             id={bracketID}
                             teamsize={size}
-                            size='small'
+                            size='tiny'
                             color='green'
                             floated='right'
                             onClick={onSubmitChangeRound2}>
@@ -3500,7 +3500,7 @@ const Brackets = ({
                         <Button
                             teamsize={size}
                             id={bracketID}
-                            size='small'
+                            size='tiny'
                             color='green'
                             floated='right'
                             onClick={onSubmitChangeRound3}>
@@ -3511,7 +3511,7 @@ const Brackets = ({
                         <Button
                             teamsize={size}
                             id={bracketID}
-                            size='small'
+                            size='tiny'
                             color='green'
                             floated='right'
                             onClick={onSubmitChangeRound4}>
