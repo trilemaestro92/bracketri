@@ -36,7 +36,7 @@ class HomePage extends Component {
       }
     `}</style>
                 <div className='outer-container'>
-                    <div className='content-container one'>
+                    <div className='content-container slogan'>
                         <div style={style.container1}>
                             <Container textAlign='center'>
                                 <Button size='massive' color='teal' animated='vertical' onClick={this.props.handleClickSample} >

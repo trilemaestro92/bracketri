@@ -14,11 +14,12 @@ body {
   height: 100%;
 }
 
-.one{
-  background-image: url('./assets/14620.jpg');
+.slogan{
+  background-image: url('./assets/sports.jpg');
   background-size: contain;
   background-position: center
 }
+
 .content-container{
   margin: 25px;
   background-color: white;
