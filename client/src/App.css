@@ -14,6 +14,11 @@ body {
   height: 100%;
 }
 
+.one{
+  background-image: url('./assets/14620.jpg');
+  background-size: contain;
+  background-position: center
+}
 .content-container{
   margin: 25px;
   background-color: white;
@@ -159,6 +164,9 @@ body {
   margin-right: 45px; 
 }
 
+.homepage-container {
+  margin-top: 105px;
+}
 .columnHeader{
   display: inherit;
 }
@@ -178,7 +186,11 @@ body {
 }
 
 
+
 @media only screen and (min-width: 690px) { 
+  .homepage-container {
+    margin-top: 0px;
+  }
   .columnHeader{
     display: none;
   }
@@ -191,7 +203,6 @@ body {
   .four.wide.computer.six.wide.mobile.six.wide.tablet.column{
     display: inline-block;
   }
-
   .user-input{
     margin: 50px;
   }
