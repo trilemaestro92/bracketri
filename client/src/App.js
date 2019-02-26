@@ -90,7 +90,7 @@ class App extends Component {
                         <Menu stackable fixed='top' inverted style={{ backgroundColor: '#2b2c2d' }}  >
                             <Menu.Item as='a' header onClick={this.logoClick} >
                                 <Image size='mini'
-                                    src='https://i-h2.pinimg.com/564x/14/aa/fd/14aafd2fc2a60c78e1d98740812d2a91.jpg'
+                                    src='https://www.renderforest.com/svg/icons/5c0594198d1fc46682f51e36/86b482a7afdad27e1e4e9141e9f0cff5.svg?AWSAccessKeyId=AKIAIDEGKSJZ3NIMWURQ&Expires=1551241600&Signature=XhNGcm7nBogBDNY4QShYgLeRbcw%3D'
                                     style={{ marginRight: '1.5em' }}
                                 />
                                 BRACKETRI
@@ -127,7 +127,7 @@ class App extends Component {
                         </Menu>
                     </nav>
                     <Switch>
-                        <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} handleClickSample={this.handleClickSample} />
+                        <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} handleClickSample={this.handleSignupClick} />
                         <PropsRoute exact path="/sample" component={Sample} />
                         <PrivateRoute path="/dashboard" component={DashboardPage} />
                         <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={this.toggleAuthenticateStatus} getUserInfo={this.getUserInfo} />

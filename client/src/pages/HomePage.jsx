@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Container, Divider, Segment, Grid, Header, Image } from 'semantic-ui-react'
+import { Button, Container, Divider, Segment, Grid, Header, Image, Label } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../App.css'
 import bracket from '../assets/Bracketri.JPG'
 
 const style = {
     container1: {
-        margin: '100px 0px 30px 0px'
+        margin: '115px 0px 85px 0px'
     },
     h1: {
         fontSize: '40px',
@@ -28,26 +28,27 @@ class HomePage extends Component {
     }
     render() {
         return (
-            <div>
-
+            <div className='homepage-container'>
+                <style>{`
+      body > div,
+      body > div  {
+        height: 100%;
+      }
+    `}</style>
                 <div className='outer-container'>
-                    <div className='content-container'>
+                    <div className='content-container one'>
                         <div style={style.container1}>
                             <Container textAlign='center'>
-                                <b style={style.h1}>Create, Control, and Analyze your Tournaments</b>
-                                <Divider />
-                            </Container>
-                            <Container textAlign='center'>
-                                <Button size='huge' color='teal' animated='vertical' onClick={this.props.handleClickSample} >
-                                    <Button.Content visible>Generate a Sample Bracket</Button.Content>
-                                    <Button.Content hidden>Using Bracketri</Button.Content>
+                                <Button size='massive' color='teal' animated='vertical' onClick={this.props.handleClickSample} >
+                                    <Button.Content visible>Create, Control, and Analyze your Tournaments</Button.Content>
+                                    <Button.Content hidden>Sign up to create yours</Button.Content>
                                 </Button>
                             </Container>
                         </div>
                     </div>
                 </div>
 
-                <div className='content-container'>
+                <div className='content-container two'>
                     <Segment vertical>
                         <Grid container stackable verticalAlign='middle'>
                             <Grid.Row stretched>
