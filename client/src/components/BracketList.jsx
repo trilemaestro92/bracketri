@@ -35,10 +35,10 @@ const BraketList = ({
 
 }) => {    
     return (
-        <div style={style.divContainer}>
+        <div  style={style.divContainer}>
             <Segment>
                 <List selection divided verticalAlign='middle'>
-                    <List.Item>
+                    <List.Item >
                         <List.Content
                             onClick={onClickBracket}
                             id={bracketID}
