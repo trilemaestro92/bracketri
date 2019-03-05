@@ -1,3 +1,14 @@
+/**
+ * Date: 3/4/2019
+ * @version 1.0 
+ * @author Tri Nguyen
+ * @description
+ *  1.0
+ *  - build a dynamic fixed header bar .
+ *  - set up the differrent pages in the documents, using react router.
+ *  - check authenticated status and toggle state based on that
+ */
+
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Menu, Image, Icon, Dropdown, DropdownMenu, Button } from 'semantic-ui-react'

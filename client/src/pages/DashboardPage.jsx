@@ -1,3 +1,15 @@
+/**
+ * Date: 3/4/2019
+ * @version 1.0 
+ * @author Tri Nguyen
+ * @description
+ *  1.0
+ *  - build dashboard page for logged in user.
+ *  - build a component modal that allow users to fill out a form for creating a new bracket.
+ *  - build a GET Route to retrieve all user's brackets and render on page 
+ *  - check authenticated status and toggle state based on that
+ */
+
 import React from 'react';
 import Moment from 'moment';
 import Auth from '../utils/Auth';
@@ -440,9 +452,8 @@ class DashboardPage extends React.Component {
     }
   }
   /**
-   * This method will be executed after initial rendering.
+   * Check if user is authenticated.
    */
-
   componentDidMount() {
     API.dashboard(Auth.getToken())
       .then(res => {
@@ -455,12 +466,21 @@ class DashboardPage extends React.Component {
       })
 
   }
+  /**
+ * Toggle between instructions 
+ * @param {Object} titleProps 
+ * @setState {Number} number index of instruction
+ */
   handleInstruction = (e, titleProps) => {
     const { index } = titleProps
     const { activeIndex } = this.state
     const newIndex = activeIndex === index ? -1 : index
     this.setState({ activeIndex: newIndex })
   }
+  /**
+   * input to search for brackets for search bar  
+   * @return {String} of searched input
+   */
   handleInputChange = (event) => {
     var searchQuery = event.target.value.toLowerCase();
     var modals = this.state.initialBrackets.filter(function (el) {
@@ -472,12 +492,24 @@ class DashboardPage extends React.Component {
       modals: modals
     });
   }
+  /**
+   * input the name of a brackets  
+   * @setState {String} set name of inpuName
+   */
   handleNameChange = (e, { value }) => {
     this.setState({ inputName: value });
   }
+  /**
+  * input the size of a brackets  
+  * @setState {Number} set size of inpuSize
+  */
   handleSizeChange = (e, { value }) => {
     this.setState({ inputSize: value });
   }
+  /**
+* input the name of each team with size > 8, size > 4, size > 2, size > 1   
+* @setState {String} set teams with  name inputs
+*/
   handleTeamOver8 = (e, { col, row }) => {
     const field = e.target.name
     const teams = this.state.teams;
@@ -502,11 +534,19 @@ class DashboardPage extends React.Component {
     teams[col][row][field]['name'] = e.target.value;
     this.setState({ teams })
   }
+  /**
+* input the name for 3 of each statistic criteria   
+* @setState {String} set category 
+*/
   handleCategoryChange = (e, { title }) => {
     const category = this.state.category;
     category[title] = e.target.value;
     this.setState({ category })
   }
+  /**
+* selecting the winner of a matchup  
+* @setState {String} set newTeams with the winner seed and name 
+*/
   handleChangeMatchup = (e, { value, options }) => {
     let seedOption
     for (let i = 0; i < options.length; i++) {
@@ -519,26 +559,46 @@ class DashboardPage extends React.Component {
     team['seed'] = seedOption
     this.setState({ newTeams: team })
   }
+  /**
+* input the 3 number input for team A criteria  
+* @setState {Number} set team1Stats with team A 3 criteria  
+*/
   handleInputChange1 = (e, { num }) => {
     let team1Stats = this.state.team1Stats;
     const field = e.target.value
     team1Stats[num] = field
     this.setState({ team1Stats })
   }
+  /**
+* input the 3 number input for team B criteria  
+* @setState {Number} set team1Stats with team B 3 criteria  
+*/
   handleInputChange2 = (e, { num }) => {
     let team2Stats = this.state.team2Stats;
     const field = e.target.value
     team2Stats[num] = field
     this.setState({ team2Stats })
   }
+  /**
+* toggle if user wants to add a scoreboard with criteria 
+* @setState {Boolean} toggle scoreboard to true or false  
+*/
   handleCheckboxToggle = (e) => {
     this.setState({ scoreboard: !this.state.scoreboard })
   }
+  /**
+* render the amount of inputs the brackets team/participents choses 
+* @setState {Number} size of team in the brackets, set team name to '' and team size to 0   
+*/
   onGenerate = (event) => {
     event.preventDefault();
     const { inputSize, inputName } = this.state
     this.setState({ size: inputSize, name: inputName, inputSize: 0, inputName: '' })
   }
+  /**
+* post/create the bracket information into database 
+* @Post {Number, String, Boolean} size of team, team name, date, the team brackets, scoreboard  
+*/
   onSubmitBracket = () => {
     const { name, size, user } = this.state
     API.createBracket({
@@ -553,6 +613,10 @@ class DashboardPage extends React.Component {
     })
     window.location.href = '/dashboard'
   }
+  /**
+* post/create the complete information of a matchup 
+* @Post {Number, String, Boolean} winner, team A stats, team B stats 
+*/
   onSubmitChangeMatchup = (e, { team1category, team2category, bracket }) => {
     const newChange = {
       column: this.state.newTeams,
@@ -572,6 +636,10 @@ class DashboardPage extends React.Component {
     this.getUserBrackets();
     window.location.pathname = queryURL
   }
+  /**
+* post/create the complete information for every matchup for round 1, round 2, round 3, round 4
+* @Post {Number, String, Boolean} winner, team A stats, team B stats 
+*/
   onSubmitChangeRound1 = (e) => {
     const newChange = {
       round: 1,
@@ -620,12 +688,20 @@ class DashboardPage extends React.Component {
     ).catch(function (e) { console.log(e) })
     this.getUserBrackets();
   }
+  /**
+* delete the selected bracket
+* @Delete {Object} the bracket with the target id 
+*/
   handleDeleteBracket = (event) => {
     API.deleteBracket(
       { userData: event.target.id }
     )
     window.location.href = '/dashboard'
   }
+  /**
+* open the modal to the input form for creating a bracket
+* @setState {Object} size, name, category, and scoreboard to null
+*/
   openModal = () => {
     this.setState({
       size: 0, name: '', inputSize: 0, inputName: '',
@@ -637,11 +713,20 @@ class DashboardPage extends React.Component {
       scoreboard: false
     })
   }
+  /**
+* open the modal to the input form for a matchup 
+* @setState {Object} team1Stats, team2Stats to null
+*/
   openActivateModal = () => {
     this.setState({
       team1Stats: {}, team2Stats: {}
     })
   }
+  /**
+* GET every brackets for authenticated user 
+* @setState {Object} initialBrackets with dataList, bracketsCreated with dataList.length 
+* @setState {Object} modals with initialBrackets
+*/
   getUserBrackets() {
     API.getPopulatedBracket()
       .then(allData => {
@@ -659,6 +744,10 @@ class DashboardPage extends React.Component {
         this.setState({ modals: this.state.initialBrackets })
       }).catch(err => console.log(err))
   }
+  /**
+* set the query URL string to render each bracket
+* @return {Object} every brackets data that matches the id 
+*/
   getBracketID() {
     const data = []
     const queryURL = window.location.pathname.substring(11)
@@ -668,6 +757,10 @@ class DashboardPage extends React.Component {
     }
     return data
   }
+  /**
+* set the query URL string to render out one bracket onClick 
+* @return {Object} the specific brackets data that matches the id 
+*/
   loadBracketInfo = () => {
     const queryURL = window.location.pathname.substring(11)
     API.getPopulatedBracket()
@@ -700,6 +793,9 @@ class DashboardPage extends React.Component {
       })
 
   }
+  /**
+* set the URL pathname with bracket id and change window location to that URL  
+*/
   onClickBracket = (e) => {
     const eventType = e.target.id
     window.location.pathname = `dashboard/${eventType}`
